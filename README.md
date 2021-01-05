@@ -4,6 +4,23 @@ description: javascript study
 
 # javascript-100
 
+{% code title="객체 리터럴 \(객체 초기화\) - 데이터 값을 객에 저장하는 방법 " %}
+```javascript
+const obj10 = {
+name1: "array",
+name2: "object"
+}
+
+const name1 = obj10.name1;
+const name2 = obj10.name2;
+
+document.write('*** 35 객체 리터럴(객체 초기화) *** <br>');
+document.write(name1, "<br>");
+document.write(name2, "<br><br><br>");
+// -- Result --
+```
+{% endcode %}
+
 ## 01. 변수
 
 자바스크립트에서는 **숫자, 문자열, 불리언** 총 세 가지의 기본 자료형이 있다. 숫자는 말 그대로 숫자이며, 숫자 그대로 사용 가능 하다. 또한, 연산\(+, -, \*, /\)이 가능하다. 문자열은 큰 따옴표로 감싼 모든 것을 문자열이라고 한다. 아래의 예로 들면 `"javascript"` 가 문자열이다. 마지막으로 불리언은 참\(true\) 또는 거짓\(false\)이 될 수 있는 값이다.
@@ -792,7 +809,7 @@ for ( let i = 0; i < arr14.length; i++ ) {
 }
 
 document.write('*** 15 배열 최댓값 구하기 *** <br>');
-document.write(max, "<br><br><br>");
+document.write(max);
 
 // -- Result --
 // *** 15 배열 최댓값 구하기 ***
@@ -809,11 +826,1064 @@ const arr15 = [100, 200, 300, 400, 500];
 let max2 = Math.max(...arr15);
 
 document.write('*** 16 배열 Math로 최댓값 구하기 *** <br>');
-document.write(max2, "<br><br><br>");
+document.write(max2);
 
 // -- Result --
 // *** 16 배열 최댓값 구하기 ***
 // 500
+```
+{% endcode %}
+
+## 17. 배열 메서드 - join\( \)
+
+`join()` 메서드는 **원소를 결합해서 하나의 문자열로 반환**한. 
+
+{% code title="Array.prototype.join\(\) Syntax" %}
+```javascript
+arr.join([separator])
+```
+{% endcode %}
+
+{% code title="join\(\)" %}
+```javascript
+const arr16 = [100, 200, 300, 400, 500];
+
+document.write('*** 17 배열 join *** <br>');
+document.write(arr16.join("*"));
+
+// -- Result --
+// *** 17 배열 join ***
+// 100*200*300*400*500
+```
+{% endcode %}
+
+## 18. 배열 메서드 - reverse\( \)
+
+`reverse()` 메서드는 **배열을 역순으로 정렬**한다.
+
+{% code title="Array.prototype.reverse\(\) Syntax" %}
+```javascript
+a.reverse()
+```
+{% endcode %}
+
+{% code title="reverse\(\)" %}
+```javascript
+const arr16 = [100, 200, 300, 400, 500];
+
+document.write('*** 18 배열 reverse *** <br>');
+document.write(arr16.reverse());
+
+// -- Result --
+// *** 18 배열 reverse ***
+// 500,400,300,200,100
+```
+{% endcode %}
+
+## 19. 배열 메서드 - sort\( \)
+
+`sort()` 메서드는 **원본 배열을 직접 변경하여 정렬된 배열을 반환**한다. 기본 정렬 순서는 오름차순이며, 내림차순도 가능하다. 이때, 정렬의 순서는 문자열의 유니코드 코드 포인트를 따르는데. 배열의 요소가 숫자여도 배열의 요소를 일시적으로 문자열로 변환한 후 문자열의 **유니코드를 비교하여 정렬**한다.
+
+`map()` 혹은 `fliter()` 메서드는 원본 배열을 변경하지 않고 새로운 배열을 생성하여 반환한다. 이를 _accessor method_ 라고 한다. 반면, `sort()` 메서드는 원본 배열을 직접 변경하는데 이를 _mutator method_라고 한다. 
+
+{% code title="Array.prototype.sort\(\) Syntax" %}
+```javascript
+arr.sort([compareFunction])
+```
+{% endcode %}
+
+{% code title="sort\(\) 메서드의 숫자와 문자열 정렬 순서" %}
+```javascript
+const color = ['red', 'yellow', 'greeng'];
+document.write(color.sort());
+
+// -- Result --
+// greeng,red,yellow
+
+const number = [1, 5, 11, 100, 22];
+document.write(number.sort());
+
+// -- Result --
+// 1,100,11,22,5
+```
+{% endcode %}
+
+{% code title="sort\(\)" %}
+```javascript
+const arr16 = [100, 500, 200, 400, 300];
+
+document.write('*** 19 배열 sort *** <br>'); 
+document.write(arr16.sort());
+
+// -- Result --
+// *** 19 배열 sort ***
+// 100,200,300,400,500
+```
+{% endcode %}
+
+`sort()` 메서드로 오름차순, 내림차순으로 정렬이 가능한데. 매개 변수로 익명 함수를 사용할 수 있다. 그 과정을 자세히 살펴보자.
+
+ 먼저 _**a에 100**_을 대입하고 _**b에 200**_을 대입하면 _**반환 값은 -200\(음수\)**_이다. 따라서, 순서는 그대로 유지된다. 
+
+{% code title="sort\(\) 오름차순 정렬" %}
+```javascript
+const arr16 = [100, 500, 200, 400, 300];
+
+document.write('*** 19 배열 sort 오름차순 정 *** <br>'); 
+document.write(arr16.sort(function (a, b) {
+    return a - b
+}));
+
+// -- Result --
+// *** 19 배열 sort 오름차순 정 ***
+// 100,200,300,400,500
+```
+{% endcode %}
+
+다음은 _**a에 500**_을 대입하고 _**b에 400**_을 대입하면 _**반환 값은 100\(양수\)**_이다. 따라서, 순서는 바뀌게 되고, 400은 500보다 먼저 정렬 된다.
+
+{% code title="sort\(\) 내림차순 정렬" %}
+```javascript
+const arr16 = [100, 500, 200, 400, 300];
+
+document.write('*** 19 배열 sort 내차순 정 *** <br>'); 
+document.write(arr16.sort(function (a, b) {
+    return b - a
+}));
+
+// -- Result --
+// *** 19 배열 sort 내차순 정 ***
+// 500,400,300,200,100
+```
+{% endcode %}
+
+##  20. 배열 메서드 - slice\( \)
+
+`slice()` 메서드는 _**start 부터 end 전까**_지의 복사본을 새로운 배열 객체로 반환한다. 원본 배열은 수정되지 않는다.
+
+{% code title="Array.prototype.slice\(\) Syntax" %}
+```javascript
+arr.slice([start[, end]])
+```
+{% endcode %}
+
+_**start : 추출 시작 점에 대한 인덱 \(포함\)**_
+
+* undefined - 0 부터 시작
+* 음수 - 배열의 끝에서 부터 길이를 나타. `slice(-2)` 의 경우, 배열의 마지막 2개를 추출
+* 배열의 길이와 같거나 큰 수 - 빈 배열 반환
+
+_**end : 추출을 종료할 기준의 인덱스 \(제외, end를 제외하고 그 전까지 요소만 추출\)**_
+
+* 지정하지 않음 - 배열의 끝까지 포함
+* 음수 - 배열의 끝에서 부 길이를 나타냄. `slice(1, -2)` 의 경우, 두 번째부터 끝에서 세 번째 요소까지 추출
+* 배열의 길이와 같거나 큰 수 - 배열의 끝 까지 추
+
+{% code title="slice\(\)" %}
+```javascript
+const arr16 = [100, 500, 200, 400, 300];
+
+document.write('*** 20 배열 slice *** <br>');
+document.write(arr16.slice(1, 3));
+
+// -- Result --
+// *** 20 배열 slice ***
+// 200, 300
+```
+{% endcode %}
+
+{% code title="slice\(\) 예제" %}
+```javascript
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+var arr1 = arr.slice(3, 5); // [4, 5]
+var arr2 = arr.slice(undefined, 5); // [1, 2, 3, 4, 5]
+var arr3 = arr.slice(-3); // [8, 9, 10]
+var arr4 = arr.slice(-3, 9); // [8, 9]
+var arr5 = arr.slice(10); // []
+var arr6 = arr.slice(4); // [5, 6, 7, 8, 9, 10]
+var arr7 = arr.slice(undefined); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+var arr8 = arr.slice(5, -4); // [6]
+var arr9 = arr.slice(2, 15); // [3, 4, 5, 6, 7, 8, 9, 10]
+
+console.log(arr); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(arr1); // [4, 5]
+console.log(arr2); // [1, 2, 3, 4, 5]
+console.log(arr3); // [8, 9, 10]
+console.log(arr4); // [8, 9]
+console.log(arr5); // []
+console.log(arr6); // [5, 6, 7, 8, 9, 10]
+console.log(arr7); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(arr8); // [6]
+console.log(arr9); // [3, 4, 5, 6, 7, 8, 9, 10]
+
+
+출처: https://im-developer.tistory.com/103 [Code Playground]
+```
+{% endcode %}
+
+* arr1 : index번호 3부터 4까지 추출
+* arr2 : index번호 0부터 4까지 추출
+* arr3 : 뒤에서 3개 추출
+* arr4 : 뒤에서부터 3번째 숫자인 8부터 추출하기 시작해서 앞에서부터 9번째 숫자\(10\) 전까지 추출하므로 숫자 8과 9 추출
+* arr5 : 배열의 길이가 10이므로 index번호 10부터 추출하면 추출할 요소가 없으므로 빈 배열을 리턴한다.
+* arr6 : index번호 4부터 끝까지 추출
+* arr7 : 처음부터 끝까지 추출함
+* arr8 : index번호 5번인 6부터 추출 시작하여 끝에서부터 -4번째인 7 전까지 추출하므로 숫자 6을 추출
+* arr9 : index번호 2번부터 끝까지 추출
+
+## 21. 배열 메서드 - concat\( \)
+
+`concat()` 메서드는 두 개 이상의 배열을 병합하는 데 사용한다. 이 메서드는 기존 배열을 변경하지 않고 대신 새 배열을 반환한다.
+
+{% code title="Array.prototype.concat\(\) Syntax" %}
+```javascript
+const new_array = old_array.concat([value1[, value2[, ...[, valueN]]]])
+```
+{% endcode %}
+
+{% code title="concat\(\)" %}
+```javascript
+const arr16 = [100, 200, 300, 400, 500];
+const arr17 = [600, 700, 800, 900, 1000];
+const concatArray = arr16.concat(arr17);
+
+document.write('*** 21 배열 concat *** <br>');
+document.write(concatArray), "<br><br>");
+
+// -- Result --
+// *** 21 배열 concat ***
+// 100,200,300,400,500,600,700,800,900,1000
+```
+{% endcode %}
+
+## 22. 배열 메서드 - shift\( \)
+
+`shift()` 메서드는 **배열에서 첫 번째 요소를 제거**하고 **제거된 요소를 반환**한다. 이 메서드는 배열의 길이를 변경한다. 메서드가 실행될 때 마다 배열의 길이가 줄어든다.
+
+{% code title="Array.prototype.shift\(\) Syntax" %}
+```javascript
+arr.shift()
+```
+{% endcode %}
+
+{% code title="Array.prototype.shift\(\)" %}
+```javascript
+const arr16 = [100, 200, 300, 400, 500];
+
+document.write(arr16.shift(), "<br>"); // 제거된 요소 반환 
+document.write(arr16, "<br>"); // 남아 있는 배열 반환 
+
+// -- Result --
+// 100
+// 200, 300, 400, 500
+```
+{% endcode %}
+
+##  23. 배열 메서드 - unshift\( \)
+
+`unshift()` 메서드는 **배열의 시작 부분에 하나 이상의 요소를 추가**하고 **배열의 새 길이를 반환**한다.
+
+{% code title="Array.prototype.unshift\(\) Syntax" %}
+```javascript
+arr.unshift(element1[, ...[, elementN]])
+```
+{% endcode %}
+
+{% code title="unshift\(\)" %}
+```javascript
+const arr16 = [200, 300, 400, 500];
+
+document.write('*** 23 배열 unshift *** <br>');
+document.write(arr16.unshift(100), "<br>"); // 배열의 길이를 반환
+document.write(arr16, "<br><br>"); // 추가된 배열을 반환
+
+// -- Result --
+// *** 23 배열 unshift ***
+// 5
+// 100,200,300,400,500
+```
+{% endcode %}
+
+##  24. 배열 메서드 - pop\( \)
+
+`pop()` 메서드는 **배열에서 마지막 요소를 제거**하고 **해당 요소를 반환**한다. 이 메서드는 배열의 길이를 변경한다.
+
+{% code title="Array.prototype.pop\(\) Syntax" %}
+```javascript
+arrName.pop()
+```
+{% endcode %}
+
+{% code title="pop\(\)" %}
+```javascript
+const arr16 = [100, 200, 300, 400, 500];
+
+document.write('*** 24 배열 pop *** <br>');
+document.write(arr16.pop(), "<br>"); // 제거된 요소 반환
+document.write(arr16, "<br><br>"); // 남아 있는 배열 반환 
+
+// -- Result --
+// *** 24 배열 pop ***
+// 500
+// 100,200,300,400
+```
+{% endcode %}
+
+##  25. 배열 메서드 - push\( \)
+
+`push()` 메서드 **하나 이상의 요소를 배열의 가장 마지막에 추가**한다. 원본 배열은 추가한 요소의 수만큼 길이\(length\)가 늘어나게 되며, 요소를 성공적으로 추가하면 **배열의 총 길이를 반환**한다.
+
+{% code title="Array.prototype.push\(\) Syntax" %}
+```javascript
+arr.push(element1[, ...[, elementN]])
+```
+{% endcode %}
+
+{% code title="push\(\)" %}
+```javascript
+const arr16 = [100, 200, 300, 400, 500];
+
+document.write('*** 25 배열 push *** <br>');
+document.write(arr16.push(500), "<br>"); // 추가된 요소 배열의 길이를 반환
+document.write(arr16, "<br><br>"); // 추가된 배열을 반환
+
+// -- Result --
+// 6
+// 100, 200, 300, 400, 500
+```
+{% endcode %}
+
+## \* 변수, 배열, 객체
+
+* 변수 : 데이터를 저장하는 곳\(한 개\)
+* 배열 : 데이터를 저장하는 곳\(두  개 이상\)
+* 객체 : 데이터를 저장하는 곳\(두 개 이상, "키, 값"\)  
+
+## 26. 객체를 배열 방식으로 사용하기 
+
+{% code title="객체를 배열 방식으로 사용하기" %}
+```javascript
+const obj1 = new Object();
+obj1[0] = 100;
+obj1[1] = 200;
+obj1[2] = "javascript";
+
+document.write('*** 26 객체, 배열 방식으로 사용하기 *** <br>');
+document.write(obj1[0], "<br>");
+document.write(obj1[1], "<br>");
+document.write(obj1[2], "<br>");
+
+// -- Result --
+// *** 26 객체 배열 방식으로 사용하기 ***
+// 100
+// 200
+// javascript
+```
+{% endcode %}
+
+{% hint style="info" %}
+_**new**_  
+생성자, 새로 생기다.
+{% endhint %}
+
+## 27. 객체 방식으로 사용하
+
+{% code title="객체 방식으로 사용하기" %}
+```javascript
+const obj2 = new Object();
+obj2.a = 100;
+obj2.b = 200;
+obj2.c = "javascript";
+
+document.write('*** 27 객체 방식으로 사용하기 *** <br>');
+document.write(obj2.a, "<br>");
+document.write(obj2.b, "<br>");
+document.write(obj2.c, "<br>");
+
+// -- Result --
+// *** 27 객체 방식으로 사용하기 ***
+// 100
+// 200
+// javascript
+```
+{% endcode %}
+
+## 28. 객
+
+{% code title="객체" %}
+```javascript
+const obj3 = {};
+obj3.a = 100;
+obj3.b = 200;
+obj3.c = "javascript";
+
+document.write('*** 28 객체 *** <br>');
+document.write(obj3.a, "<br>");
+document.write(obj3.b, "<br>");
+document.write(obj3.c, "<br><br>");
+
+// -- Result --
+// *** 28 객체 ***
+// 100
+// 200
+// javascript
+```
+{% endcode %}
+
+## 29. 객체의 정
+
+{% code title="객체의 정석" %}
+```javascript
+const obj4 = {
+    a: 100,
+    b: 200,
+    c: "javascript",
+}
+
+document.write('*** 29 객체의 정석 *** <br>');
+document.write(obj4.a, "<br>");
+document.write(obj4.b, "<br>");
+document.write(obj4.c, "<br><br><br>");
+
+// -- Result --
+// *** 29 객체의 정 ***
+// 100
+// 200
+// javascript
+```
+{% endcode %}
+
+## 30. 객체 \(배열 속의 객체\)
+
+{% code title="객체 \(배열 속의 객체\)" %}
+```javascript
+const obj5 = [
+    {
+        a: 100,
+        b: 200
+    },
+    {
+        c: 300,
+        d: 400
+    }
+];
+
+document.write('*** 30 객체(배열 속 객체) *** <br>');
+document.write(obj5[0].a, "<br>");
+document.write(obj5[0].b, "<br>");
+document.write(obj5[1].c, "<br>");
+document.write(obj5[1].d, "<br>");
+
+
+// -- Result --
+// *** 30 객체 (배열 속의 객체) ***
+// 100
+// 200
+// 300
+// 400
+```
+{% endcode %}
+
+## 31. 객체 \(객체 속의 배열\)
+
+{% code title="객체 \(객체 속의 배열\)" %}
+```javascript
+const obj6 = {
+    a: 100,
+    b: [200, 300],
+    c: "javascript"
+}
+
+document.write('*** 31 객체(객체 속의 배열) *** <br>');
+document.write(obj6.a, "<br>");
+document.write(obj6.b[0], "<br>");
+document.write(obj6.b[1], "<br>");
+document.write(obj6.c, "<br><br><br>");
+
+// -- Result --
+// *** 31 객체 (객체 속의 배) ***
+// 100
+// 200
+// 300
+// javascript
+```
+{% endcode %}
+
+## 32. 객체 \(객체 속의 함수\)
+
+{% code title="객체 \(객체 속의 함수\)" %}
+```javascript
+const obj7 = {
+    a: 100,
+    b: [200, 300],
+    c: "javascript",
+    d: function() {
+        document.write("자바스크립트가 실행되었습니다. <br>");
+    },
+    e: function() {
+        document.write(this.c + "가 실행되었습니다. <br>");
+    }
+}
+
+document.write('*** 32 객체(객체 속의 함수) *** <br>');
+document.write(obj7.a, "<br>");
+document.write(obj7.b[0], "<br>");
+document.write(obj7.b[1], "<br>");
+document.write(obj7.c, "<br>");
+obj7.d();
+obj7.e();
+
+// -- Result --
+// *** 32 객체(객체 속의 함수) ***
+// 100
+// 200
+// 300
+// javascript
+// 자바스크립트가 실행되었습니다.
+// javascript가 실행되었습니다.
+```
+{% endcode %}
+
+{% hint style="info" %}
+_**배열 속에는 함수를 넣을 수 없다.**_
+{% endhint %}
+
+## 33. 객체 생성자 함수
+
+{% code title="객체 생성자 함수" %}
+```javascript
+function obj8(a, b) {
+    this.a = a;
+    this.b = b;
+    this.c = function () {
+        document.write(this.a + this.b);
+    };
+};
+
+const result1 = new obj8(100, 200);
+const result2 = new obj8("javascript", "react");
+
+document.write('*** 33 객체 생성자 함수 *** <br>');
+document.write(result1.a, "<br>");
+document.write(result1.b, "<br>");
+document.write(result2.a, "<br>");
+document.write(result2.b, "<br>");
+result1.c();
+
+document.write("<br>");
+
+result2.c();
+
+// -- Result --
+// *** 33 객체 생성자 함수 ***
+// 100
+// 200
+// javascript
+// react
+// 300
+// javascriptreact
+```
+{% endcode %}
+
+{% hint style="info" %}
+_**생성자 함수란?**_  
+객체를 생성할 때 사용하는 함수   
+여러 개의 동일한 프로퍼티를 가지는 객체를 생성하기 위해 사용 
+
+![](https://t1.daumcdn.net/cfile/tistory/99C293435BBB5FDD32)  
+\(1\) new 키워드는 빈 객체 {}를 생성
+
+\(2\) 생성자 함수는 빈 객체에 생성 할 프로퍼티를 정의
+
+\(3\) 함수의 인수들을 프로퍼티에 할당
+
+\(4\) 생성된 Student 객체를 student에 할당  
+  
+출처: [https://doitnow-man.tistory.com/132\#t1](https://doitnow-man.tistory.com/132#t1) \[즐거운인생 \(실패 또하나의 성공\)\]
+{% endhint %}
+
+## 34. 객체 리터럴 \(객체 초기화\) - 데이터 값을 변수에 저장
+
+{% code title="객체 리터럴 \(객체 초기화\) - 데이터 값을 변수에 저장" %}
+```javascript
+// 변수
+const name1 = "array";
+const name2 = "object";
+
+const obj9 = {
+    name1,
+    name2,
+}
+
+document.write('*** 34 객체 리터럴(객체 초기화) *** <br>');
+document.write(obj9.name1, "<br>");
+document.write(obj9.name2, "<br><br><br>");
+
+// -- Result --
+// *** 34 객체 리터럴(객체 초기화) - 데이터 값을 변수에 저 ***
+// array
+// object
+```
+{% endcode %}
+
+## 35. 객체 리터럴 \(객체 초기화\) - 데이터 값을 객에 저장
+
+{% code title="객체 리터럴 \(객체 초기화\) - 데이터 값을 객에 저장" %}
+```javascript
+// 객
+const obj10 = {
+    name1: "array",
+    name2: "object"
+}
+
+const name1 = obj10.name1;
+const name2 = obj10.name2;
+
+document.write('*** 35 객체 리터럴(객체 초기화) *** <br>');
+document.write(name1, "<br>");
+document.write(name2, "<br><br><br>");
+
+// -- Result --
+// *** 35 객체 리터럴(객체 초기화) -데이터 값을 객체에 저 ***
+// array
+// object
+```
+{% endcode %}
+
+## 36. 객체 구조 분해 할당 \(데이터를 뽑아내는 방법\)
+
+{% code title="객체 구조 분해 할당 \(데이터를 뽑아내는 방법\)" %}
+```javascript
+const obj11 = {
+    name1: "array",
+    name2: "object"
+}
+
+const { name1, name2 } = obj11;
+
+document.write('*** 36 객체 구조 분해 할당 *** <br>');
+document.write(name1, "<br>");
+document.write(name2, "<br><br><br>");
+
+// -- Result --
+// *** 36 객체 구조 분해 할당 ***
+// array
+// object
+```
+{% endcode %}
+
+{% code title="참고 사항" %}
+```javascript
+// 이러한 객체 구조 분해 할당 방법은
+const { name1, name2 } = obj11;
+
+// 아래와 같은 방법을 축약한 형태이다.
+const name1 = obj10.name1;   
+const name2 = obj10.name2;
+```
+{% endcode %}
+
+{% hint style="info" %}
+React 에서 많이 사용하는 방법이다.
+{% endhint %}
+
+## 37. 배열 구조 분해 할당 \(데이터를 뽑아내는 방법\)
+
+{% code title="배열 구조 분해 할당 \(데이터를 뽑아내는 방법\)" %}
+```javascript
+const arr18 = ["array", "object"];
+
+const [ name1, name2 ] = arr18;
+
+document.write('*** 37 배열 구조 분해 할당 *** <br>');
+document.write(name1, "<br>");
+document.write(name2, "<br><br><br>");
+
+// -- Result --
+// *** 37 배 구조 분해 할당 ***
+// array
+// object
+```
+{% endcode %}
+
+{% code title="참고 사항" %}
+```javascript
+// 이러한 배 구조 분해 할당 방법은
+const [ name1, name2 ] = arr18;
+
+// 아래와 같은 방법을 축약한 형태이다.
+const name1 = arr18[0];
+const name2 = arr18[1];
+```
+{% endcode %}
+
+## 38. 객체 펼침 연산
+
+{% code title="객체 펼침 연산자" %}
+```javascript
+const spread = {
+    nameA: "array",
+    nameB: "object"
+}
+
+const newSpread = { ...spread };
+
+document.write('*** 38 객체 펼침 연산자 *** <br>');
+document.write(newSpread.nameA, "<br>");
+document.write(newSpread.nameB, "<br><br><br>");
+
+// -- Result --
+// *** 38 객체 펼침 연산자 ***
+// array
+// object
+```
+{% endcode %}
+
+{% hint style="info" %}
+React, Vue 에서 많이 사용하는 방법이다.
+{% endhint %}
+
+## 39. 객체 펼침 연산
+
+{% code title="객체 펼침 연산자" %}
+```javascript
+const spread = {
+    nameA: "array",
+    nameB: "object"
+}
+
+const newSpread = { ...spread, nameC: "react" };
+
+document.write('*** 39 객체 펼침 연산자 *** <br>');
+document.write(newSpread.nameA, "<br>");
+document.write(newSpread.nameB, "<br>");
+document.write(newSpread.nameC, "<br><br><br>");
+
+// -- Result --
+// *** 39 객체 펼침 연산자 ***
+// array
+// object
+// react
+```
+{% endcode %}
+
+## 40. 배열 펼침 연산자 \(복사\)
+
+{% code title="배열 펼침 연산자 \(복사\)" %}
+```javascript
+const spread = ["array", "object"];
+const newSpread = [ ...spread ];
+
+document.write('*** 40 배열 펼침 연산자(복사) *** <br>');
+document.write(newSpread, "<br><br><br>");
+
+// -- Result --
+// *** 40 배열 펼침 연산자(복사) ***
+// array,object
+```
+{% endcode %}
+
+## 41. 배열 펼침 연산자 \(결합\)
+
+{% code title="배열 펼침 연산자 \(결합\)" %}
+```javascript
+const spread1 = ["array", "object"];
+const spread2 = ["react", "vue"];
+const newSpread = [ ...spread1, ...spread2 ];
+
+document.write('*** 41 배열 펼침 연산자(결합) *** <br>');
+document.write(newSpread, "<br><br><br>");
+
+// -- Result --
+// *** 41 배열 펼침 연산자(결합) ***
+// array,object,react,vue
+```
+{% endcode %}
+
+## \* 데이터 저장 데이터 출력
+
+1. 데이터 저장
+
+   * 변수
+   * 배열
+   * 객체
+
+2. 데이터  출력
+   * 함수
+
+## 42. 선언적 함
+
+{% code title="선언적 함수" %}
+```javascript
+function func1() {
+    document.write("*** 42 선언적 함수 *** <br>");
+    document.write("func1이 실행되었습니다.<br><br>");
+};
+
+func1();
+
+// -- Result --
+// *** 42 선언적 함수 ***
+// func1이 실행되었습니다.
+```
+{% endcode %}
+
+## 43. 익명 함수
+
+**익명 함수**란 **함수의 이름을 지정할 때, 변수의 이름을 빌려서 사용**하는 것이다.
+
+{% code title="익명 함수" %}
+```javascript
+const func2 = function () {
+    document.write("*** 43 익명 함수 *** <br>");
+    document.write("func2가 실행되었습니다.<br><br>");
+};
+
+func2();
+
+// -- Result --
+// *** 43 익명 함수 ***
+// func2가 실행되었습니다.
+```
+{% endcode %}
+
+## 44. 매개 변수가 있는 함
+
+{% code title="매개 변수가 있는 함수" %}
+```javascript
+function func3(name) {
+    document.write("*** 44 매개 변수가 있는 함수 *** <br>");
+    document.write("func3이 실행되었습니다.<br><br>");
+}
+
+func3();
+
+// -- Result --
+// *** 44 매개 변수가 있는 함수 ***
+// func3이 실행되었습니다.
+```
+{% endcode %}
+
+## 45. 리턴 값이 있는 함
+
+{% code title="리턴 값이 있는 함수" %}
+```javascript
+function func4() {
+    const str = "func4가 실행되었습니다.<br><br>";
+    return str; // 출력하는 역할
+};
+
+// func4(); -> 작동되지 않는다.
+
+document.write("*** 45 리턴값이 있는 함수 *** <br>");
+document.write(func4(), "<br><br>");
+
+// -- Result --
+// *** 45 리턴값이 있는 함수 ***
+// func4가 실행되었습니다.
+```
+{% endcode %}
+
+## 46. 재귀 함
+
+**재귀 함수**는 **함수 정의문 내에서 다시 함수를 호출 시켜주는 함수**이다. **함수를 여러 번 실행** 시킬 때 사용한다.
+
+{% code title="재귀 함수" %}
+```javascript
+function func5(num) {
+    if (num == 0) {
+        document.write("func5이 실행되었습니다.<br>");
+    } else {
+        document.write("func5이 샐힝되었습니다.<br>");
+        func5(num - 1);
+    }
+};
+
+document.write("*** 46 재귀 함수 *** <br>");
+func5(9);
+
+// -- Result --
+// *** 46 재귀 함수 ***
+// func5이 샐힝되었습니다.
+// func5이 샐힝되었습니다.
+// func5이 샐힝되었습니다.
+// func5이 샐힝되었습니다.
+// func5이 샐힝되었습니다.
+// func5이 샐힝되었습니다.
+// func5이 샐힝되었습니다.
+// func5이 샐힝되었습니다.
+// func5이 샐힝되었습니다.
+// func5이 샐힝되었습니다.
+```
+{% endcode %}
+
+{% code title="재귀 함수를 잘 못 사용한 예제" %}
+```javascript
+// 이런 경우 무한 루프에 빠지므로 사이트가 다운된다. 
+
+function func5() {
+    document.write("*** 46 재귀 함수 *** <br>");
+    func5();
+}
+```
+{% endcode %}
+
+## 47. 콜백 함
+
+**콜백 함수**는 **함수를 실행시키고 난 뒤, 또 함수를 실행** 시키고 싶을 때 사용하는 함수이다.
+
+{% code title="콜백 함수" %}
+```javascript
+function callback(num) {
+    for ( let i = 0; i <= 10; i++ ) {
+        num(i);
+    }
+};
+
+const func6 = function (i) { // 익명 함수인데 매개 변수가 있음
+    document.write("func6이 실행되었습니다.<br>"); // 실행 함수
+};
+
+document.write("*** 47 콜백 함수 *** <br>");
+callback(func6);
+
+// -- Result --
+// *** 47 콜백 함수 ***
+// func6이 실행되었습니다.
+// func6이 실행되었습니다.
+// func6이 실행되었습니다.
+// func6이 실행되었습니다.
+// func6이 실행되었습니다.
+// func6이 실행되었습니다.
+// func6이 실행되었습니다.
+// func6이 실행되었습니다.
+// func6이 실행되었습니다.
+// func6이 실행되었습니다.
+// func6이 실행되었습니다.
+```
+{% endcode %}
+
+## 48-1. 콜백 함수 \(동기\)
+
+**동기 콜백 함수**는 함수가 **순서대로 실행** 된다.
+
+{% code title="콜백 함수 \(동기\)" %}
+```javascript
+function a() {
+    console.log("a");
+};
+
+function b() {
+    console.log("b");
+}
+
+a();
+b();
+
+// -- Result --
+// a
+// b
+```
+{% endcode %}
+
+## 48-2. 콜백 함수 \(동기\)
+
+**비동기 콜백 함수**는 함수의 **순서가 바뀌어서 실행** 된다.
+
+{% code title="콜백 함수 \(비동기\)" %}
+```javascript
+function c() {
+    setTimeout(function() {
+        console.log("c");
+    }, 1000);
+};
+
+function d() {
+    console.log("d");
+};
+
+c();
+d();
+
+// -- Result --
+// d
+// c
+```
+{% endcode %}
+
+## 48-3. 콜백 함
+
+a 가 실행된 후, b 가 실행된다. 즉, 동기\(순서\)를 맞추기 위한 것이다. 정식 법이 아니다.
+
+{% code title="콜백 함수" %}
+```javascript
+function a(callback) {
+    setTimeout(function() {
+        console.log("a");
+        callback();
+    }, 1000);
+};
+
+function b() {
+    console.log("b");
+}
+
+// a가 끝나고 b가 실행
+a(function(){
+    b();
+});
+
+// -- Result --
+// a
+// b
+```
+{% endcode %}
+
+## 48-4. 콜백 지
+
+{% code title="콜백 지옥" %}
+```javascript
+function a(callback) {
+    setTimeout(function () {
+        console.log("a");
+        callback();
+    }, 1000);
+};
+
+function b(callback) {
+    setTimeout(function () {
+        console.log("b");
+        callback();
+    }, 1000);
+};
+
+function c(callback) {
+    setTimeout(function () {
+        console.log("c");
+        callback();
+    }, 1000);
+};
+
+function d(callback) {
+    setTimeout(function () {
+        console.log("d");
+    }, 1000);
+};
+
+a(function () {
+    b(function () {
+        c(function () {
+            d();
+        });
+    });
+});
+
+// -- Result --
+// a
+// b
+// c
+// d
 ```
 {% endcode %}
 

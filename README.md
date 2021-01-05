@@ -6,7 +6,7 @@ description: javascript study
 
 ## 01. 변수
 
-자바스크립트에서는 **숫자, 문자열, 불리언** 총 세 가지의 기본 자료형이 있다. 숫자는 말 그대로 숫자이며, 숫자 그대로 사용 가능 하다. 또한, 연산\(+, -, \*, /\)이 가능하다. 문자열은 큰 따옴표로 감싼 모든 것을 문자열이라고 한다. 아래의 예로 들면 `"javascript"` 가 문자열이다. 마지막으로 불리언은 참\(true\) 또는 거짓\(false\)이 될 수 있는 값이다. 
+자바스크립트에서는 **숫자, 문자열, 불리언** 총 세 가지의 기본 자료형이 있다. 숫자는 말 그대로 숫자이며, 숫자 그대로 사용 가능 하다. 또한, 연산\(+, -, \*, /\)이 가능하다. 문자열은 큰 따옴표로 감싼 모든 것을 문자열이라고 한다. 아래의 예로 들면 `"javascript"` 가 문자열이다. 마지막으로 불리언은 참\(true\) 또는 거짓\(false\)이 될 수 있는 값이다.
 
 자바스크립트에서는 **변수\(variable\)**를 써서 값에 이름을 붙일 수 있다. 한 가지 물건을 넣을 수 있는 상자라고 생각하면 쉽다. 변수에는 값을 할당할 수 있으며, 그 값은 변할 수 있다.
 
@@ -28,7 +28,6 @@ document.write(z, "<br><br><br>");
 // 200
 // 300
 // javascript
-
 ```
 {% endcode %}
 
@@ -59,7 +58,7 @@ document.write(arr1[2], "<br><br><br>");
 {% hint style="info" %}
 _**var, let, const 차이점**_
 
-**var** 은 변수 재 선언이 가능하지만, **let** 과 **const** 는 변수 재 선언이 불가능하다. 
+**var** 은 변수 재 선언이 가능하지만, **let** 과 **const** 는 변수 재 선언이 불가능하다.
 {% endhint %}
 
 {% code title="var, let, const 차이점" %}
@@ -145,7 +144,7 @@ document.write(arr3[2], "<br><br><br>");
 
 ## 05. 배열
 
-아래의 예제는 상수에 대괄호\[ \]를 사용하여 데이터를 배열로 나열한 방법이다. 
+아래의 예제는 상수에 대괄호\[ \]를 사용하여 데이터를 배열로 나열한 방법이다.
 
 {% code title="05. 배열" %}
 ```javascript
@@ -168,7 +167,7 @@ document.write(arr4[2], "<br><br><br>");
 
 배열 안에서 또 다른 배열을 넣을 수 있다. 대괄호\[ \]를 사용하여 배열을 나열한 후, 새로운 대괄호\[ \]를 안에 넣으면 2차 배열을 사용 할 수 있다.
 
-데이터를 불러올 때에는 `arr5[2][0]`와 같이 배열의 2번째 중 1번째의 데이터를 호출해야 정확하게 불러올 수 있다.
+데이터를 불러올 때에는 `arr5[2][0]`와 같이 배열의 2번째 중 0번째의 데이터를 호출해야 정확하게 불러올 수 있다.
 
 {% code title="06. 2차 배열" %}
 ```javascript
@@ -191,7 +190,7 @@ document.write(arr5[2][1], "<br><br><br>");
 
 ## 07. 배열의 개수
 
-배열의 개를 구할 때에는 변수 이름 뒤에 `.length` 를 붙이면 배열의 개수를 알 수 있다.
+배열의 개수 구할 때에는 변수 이름 뒤에 `.length` 를 붙이면 배열의 개수를 알 수 있다.
 
 {% code title="07. 배열의 개수" %}
 ```javascript
@@ -208,7 +207,7 @@ document.write(arr6.length,"<br><br><br>");
 
 ## 08. 배열 불러오기 \(for 문\)
 
-자바스크립트에서 반복문은 매우 다양한 종류가 있다. 반복문이 기본적으로 하는 일은 모두 같다. 반복문은 한 동작을 여러 번 반복한다. \(0회 반복하는 것도 가능\) 다양한 반복문 메커니즘은 다양한 방법으로 반복문의 시작 점과 끝나는 점을 정할 수 있다. 
+자바스크립트에서 반복문은 매우 다양한 종류가 있다. 반복문이 기본적으로 하는 일은 모두 같다. 반복문은 한 동작을 여러 번 반복한다. \(0회 반복하는 것도 가능\) 다양한 반복문 메커니즘은 다양한 방법으로 반복문의 시작 점과 끝나는 점을 정할 수 있다.
 
 * [for 문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Loops_and_iteration#for_%EB%AC%B8)
 * [do...while 문](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Loops_and_iteration#do...while_%EB%AC%B8)
@@ -219,7 +218,7 @@ document.write(arr6.length,"<br><br><br>");
 * \*\*\*\*[**for...in 문**](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Loops_and_iteration#for...in_%EB%AC%B8)\*\*\*\*
 * \*\*\*\*[**for...of 문**](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Loops_and_iteration#for...of_%EB%AC%B8)\*\*\*\*
 
-**for 반복문**은 어떤 특정한 조건이 거짓으로 판별 될 때까지 반복한다. 
+**for 반복문**은 어떤 특정한 조건이 거짓으로 판별 될 때까지 반복한다.
 
 {% code title="for 반복문" %}
 ```javascript
@@ -229,7 +228,7 @@ for ( [초기문]; [조건문]; [증감문] ) 문장
 
 1. 초기화 구문인 **초기문**이 존재한다면 초기문이 실행된다. 복잡한 구문 혹은 변수로 선언되기도 한다.
 2. **조건문**은 조건을 검사한다. 만약 조건문이 참이라면, 그 반복문은 실행된다. 만약 조건문이 거짓이라면, 그 for문은 종결된다. 만약 그 조건문이 생략된다면, 그 조건문은 참으로 추정된다.
-3. 문장 실행된다. 많은 문장을 실행할 경우에는 { } 를 사용해서 문장들을 묶어 준다.
+3. 문장 실행된다. 많은 문장을 실행할 경우에는 중괄{ } 를 사용해서 문장들을 묶어 준다.
 4. 갱신 구문인 **증감문**이 존재한다면 실행되고 2번째 단계로 돌아간다.
 
 {% code title="08. 배열 불러오기 \(for 문\)" %}
@@ -254,7 +253,7 @@ for( let i = 0; i < arr7.length; i++ ) {
 
 **`forEach()`** 메서드는 **주어진 함수를 배열 요소 각각에 대해 실행**한다.
 
-{% code title="rray.prototype.forEach\(\)" %}
+{% code title="array.prototype.forEach\(\)" %}
 ```javascript
 arr.forEach( callback (currentvalue[, index[, array]])[, thisArg])
 ```
@@ -264,9 +263,9 @@ arr.forEach( callback (currentvalue[, index[, array]])[, thisArg])
 * `currentvalue` - 처리할 현재 요소
 * `index` - \(option\) 처리할 현재 요소의 인덱스
 * `array` - \(option\) `forEach()` 를 호출한 배열
-* `thisArg` - \(option\) `callback` 을 실행할 때 `this` 로 사용할 
+* `thisArg` - \(option\) `callback` 을 실행할 때 `this` 로 사용
 
-**`forEach()`** 는 주어진 `callback` 을 배열에 있는 각 요소에 대해 오름 차순으로 한 번씩 실행한다. 삭제했거나 초기화하지 않은 인덱스 속성에 대해서는 실행하지 않는다. 
+**`forEach()`** 는 주어진 `callback` 을 배열에 있는 각 요소에 대해 오름 차순으로 한 번씩 실행한다. 삭제했거나 초기화하지 않은 인덱스 속성에 대해서는 실행하지 않는다.
 
 `callback` 은 다음 세 인수와 함께 호출된다.
 
@@ -331,19 +330,59 @@ arr8.forEach( (element, index, array) => {
 
 ## 10. 배열 불러오기 \(map\)
 
- **`map( )`** 메서드 는 호출 배열의 모든 요소에 대해 제공된 함수를 호출 한 결과로 채워진 **새 배열을 만든다.** 차이점은 있지만 **`forEach( )`** 와 같다.
-
 {% code title="array.prototype.map\(\)" %}
 ```javascript
 array.map(callback(currentValue[, index[, array]])[, thisArg])
 ```
 {% endcode %}
 
+아래의 예제를 살펴보면, `array = [1, 2, 3, 4, 5];` 를 만든 후, 새로운 `newArray` 는 기존 `array` 의 각 인덱스에 있는 아이템 값에 `+2` 를 하여 구성하고 싶다. `map()` 메서드를 사용한 결과는 `newArray = [3, 4, 5, 6, 7]` 이다.
+
+`map()` 메서드는 이처럼 **원본의 처음 인덱스부터 마지막 인덱스까지 순회하며 현재 인덱스\(index\)의 아이템\(element\)의 데이터를 가공**할 수 있고, **`return`을 하면 가공된 데이터를 새로운 리스트의 인덱스\(index\)에 담게 된다.**
+
+이때, `return` 을 하였다고 `map() {}` 의 `scope` 를 빠져나가는 것은 아니다. 그 다음 인덱스를 가리키는 것이다. **`map() {}` 의 `scope` 를 빠져나가는 시점은 원본\(`array`\)의 마지막 인덱스\(index\)까지 모두 순회하였을 경우**이다.
+
+`map()` 메서드를 사용해서 만들어진 새로운 배열의 `.length` 는 원본 배열의 `.length` 와 동일하게 되며, 내부의 아이템\(element\)만 다르게 되는 것이다.
+
+{% code title="map\(\) 메서드" %}
+```javascript
+let array = [1, 2, 3, 4, 5];
+let newArray = array.map(function(element, index) {
+	return element + 2;
+});
+
+console.log(newArray);
+
+// -- Result --
+// [3, 4, 5, 6, 7]
+```
+{% endcode %}
+
+`array` 의 마지막 인덱스에서만 `+2` 를 도출하고 싶다면 어떻게 해야 할까?
+
+아래의 예제 결과를 보면 `map() {}` 에서 `return` 을 하지 않으면 해당 인덱스\(index\)는 undefined로 초기화 되는 것을 알 수 있다.
+
+{% code title="map\(\) 메서드" %}
+```javascript
+let array = [1, 2, 3, 4, 5];
+let newArray = array.map(function(element, index) {
+	if( element === 5 ) return element + 2;
+});
+
+console.log(newArray);
+
+// -- Result --
+// [undefined, undefined, undefined, undefined, 7]
+```
+{% endcode %}
+
+
+
 {% code title="map\(\) 방법 1" %}
 ```javascript
 const arr9 = [100, 200, "javascript"];
 
-arr9.forEach(function( elem ) {
+arr9.map(function( elem ) {
     document.write(elem, "<br>");
 });
 
@@ -358,7 +397,7 @@ arr9.forEach(function( elem ) {
 ```javascript
 const arr9 = [100, 200, "javascript"];
 
-arr9.forEach( elem => {
+arr9.map( elem => {
     document.write(elem, "<br>");
 });
 
@@ -373,7 +412,7 @@ arr9.forEach( elem => {
 ```javascript
 const arr9 = [100, 200, "javascript"];
 
-arr9.forEach( (element, index, array) => {
+arr9.map( (element, index, array) => {
     document.write(element, "<br>");
     document.write(index, "<br>");
     document.write(array, "<br><br>");
@@ -404,7 +443,7 @@ arr9.forEach( (element, index, array) => {
 ```javascript
 for ([initialization]; [condition]; [final-expression])
    statement
-   
+
 // 예
 const a = ["a", "b"];
 for (let i = 0; i < a.length; i++) {
@@ -427,7 +466,7 @@ array.forEach(callback(currentvalue[, index[, array]])[, thisArg])
 
 // 예제
 const a = ["a", "b"];
-animals.forEach( elem => {
+a.forEach( elem => {
   console.log(elem);
 });
 
@@ -439,7 +478,7 @@ animals.forEach( elem => {
 
 ### 3. map\( \)
 
-배열의 각 요소에 대해 `callback` 을 실행하고 실행 결과를 **모은 새 배열을 리턴**한다. 배열을 순회하므로 중간에 `break;` 문을 사용할 수 없다. 이런 경우라면 `for( )` 문을 사용해야 한다.
+배열의 각 요소에 대해 `callback` 을 실행하고 **실행 결과를 모은 새 배열을 리턴**한다. 배열을 순회하므로 중간에 `break;` 문을 사용할 수 없다. 이런 경우라면 `for( )` 문을 사용해야 한다.
 
 {% code title="map\(\)" %}
 ```javascript
@@ -447,7 +486,7 @@ array.map(callback(currentValue[, index[, array]])[, thisArg])
 
 // 예제
 const a = ["a", "b"];
-aa = animals.map(elem => {
+aa = a.map( elem => {
   console.log(elem);
 });
 console.log(aa);
@@ -455,17 +494,16 @@ console.log(aa);
 // -- Result --
 // a
 // b
-// [undefined, undefined] -> 별도의 return이 없기때문에 순회했던 개수만큼의 undefined 원소
+// [undefined, undefined]-> 별도의 return이 없기때문에 순회했던 개수만큼의 undefined을 도출 
 ```
 {% endcode %}
 
-`map( )` 의 용도를 제대로 살리려면 `return` 문이 있어야 한다. `return` 문이 포함되면 배열의 각 요소에 대해 `callback` 을 실행하고 실행 결과를 모은 새 배열을 리턴 했다.
+`map()` 메서의 용도를 제대로 살리려면 `return` 문이 있어야 한다. `return` 문이 포함되면 배열의 각 요소에 대해 `callback` 을 실행하고 실행 결과를 모은 새 배열을 리턴 했다.
 
 {% code title="map\(\), return" %}
 ```javascript
-// 예제
 const a = ["a", "b"];
-aa = animals.map(elem => {
+aa = a.map( elem => {
   console.log(elem);
   return "alphabet" + a;
 });
@@ -474,7 +512,7 @@ console.log(aa);
 // -- Result --
 // a
 // b
-// ["alphabet a", "alphabet b"] 
+// ["alphabet a", "alphabet b"]
 ```
 {% endcode %}
 
@@ -483,7 +521,7 @@ console.log(aa);
 
 배열을 순회 하려면 _**forEach\(\)**_
 
-배열을 순회 후 새 배열을 얻고 싶다면 _**map\(\)**_
+배열을 순회 한 후, 새 배열을 얻고 싶다면 _**map\(\)**_
 {% endhint %}
 
 ## 11. 배열 불러오기 \(for...in 문\)
@@ -504,9 +542,9 @@ for (variable in object) {
 
 1. 프로퍼티를 열거하는 순서
 
-   객체 리터럴 식에 쓴 것에 대한 결과 값이 순서대로 나오기는 하지만 객체 리터럴에 쓴 순서대로 열거되지는 않는다. 즉, 순서가 보장되는 것이 아니다. 원래 프로퍼티 간에는 순서가 없는 것으로 순서를 의식하는 것 자체가 잘못된 것이다. 
+   객체 리터럴 식 쓴 것에 대한 결과 값이 순서대로 나오기는 하지만 객체 리터럴에 쓴 순서대로 열거되지는 않는다. 즉, 순서가 보장되는 것이 아니다. 원래 프로퍼티 간에는 순서가 없는 것으로 순서를 의식하는 것 자체가 잘못된 것이다.
 
-   하지만, 배열의 경우는 순서를 의식하는 데이터 타입이다. 아래의 예제에서 기대한 순서를 보이고 있지만 `for...in` 문은 순서를 보장하지 않기 때문에 이 같은 동작 방식에  지나치게 의존해서는 안된다.
+   하지만, 배열의 경우는 순서를 의식하는 데이터 타입이다. 아래의 예제에서 기대한 순서를 보이고 있지만 `for...in` 문은 순서를 보장하지 않기 때문에 이 같은 동작 방식에 지나치게 의존해서는 안된다.
 
 2. 열거할 수 없는 프로퍼티의 존재
 
@@ -538,7 +576,7 @@ _**for...in**_ 문은 **vue**에서 많이 사용한다.
 
 ## 12. 배열 불러오기 \(for...of 문\)
 
-ES6에서 추가된 새로운 컬렉션 전용 반복 구문이다. 모든 객체가 아닌 컬렉션만 반복한다. \[Symbol.iterator\] 속성을 가지는 컬렉션의 프로퍼티를 반복한다. 
+ES6에서 추가된 새로운 컬렉션 전용 반복 구문이다. 모든 객체가 아닌 컬렉션만 반복한다. \[Symbol.iterator\] 속성을 가지는 컬렉션의 프로퍼티를 반복한다.
 
 {% code title="for...of 문" %}
 ```javascript
@@ -556,16 +594,16 @@ for (let i of arr11) {
 ```
 {% endcode %}
 
-배열이나 객체에 따라 사용하는 방법이 다르다. `for...in 문` 같은 배열, `for...of 문` 은 객체.
+배열이나 객체에 따라 사용하는 방법이 다르다. `for...in 문`  배열, `for...of 문` 은 객체.
 
 ## \* for...in vs for...of
 
 ### 1. for...in
 
-모든 객체의 모든 열거 가능한 속성을 반복한다. 즉, **객체의 요소**들\(Data\)를 순회하기 위한 구문이다.
+모든 객체의 모든 열거 가능한 속성을 반복한다. 즉, **객체의 요소들\(Data\)를 순회**하기 위한 구문이다.
 
 * **인덱스가 리턴**
-* 루프 구문이 요소들만 순회하는 것이 아니라 프로토타입 체임도 순회
+* 루프 구문이 요소들만 순회하는 것이 아니라 프로토타입 체도 순회
 * 루프 순회 순서가 무작위
 
 {% code title="for...in" %}
@@ -575,7 +613,6 @@ for (var i in 'string') {
 }
 
 // 0, 1, 2, 3, 4, 5
-
 ```
 {% endcode %}
 
@@ -583,18 +620,17 @@ for (var i in 'string') {
 
 모든 객체가 아닌 컬렉션만 반복한다. \[Symbol.iterator\] 속성을 가지는 컬렉션의 프로퍼티를 반복한다. 즉, **객체의 속성**들을 순회하기 위한 구문이다.
 
-*  **값이 리턴**되어 바로 값을 사용할 수 있음
+* **값이 리턴**되어 바로 값을 사용 할 수 있음
 * 배열 순회를 지원하는 문법 중에서 가장 간결하고 직접적으로 접근 가능
-* forEach\(\) 에서 지원하지 않는 break, continue, return  구문 사용 가
+* `forEach()` 메서드 에서 지원하지 않는 break, continue, return  구문 사용 가능 
 
 {% code title="for...of" %}
 ```javascript
 for (var i of 'string') {
     alert(i); 
 } 
- 
-// s, t, r, i, n, g
 
+// s, t, r, i, n, g
 ```
 {% endcode %}
 
@@ -606,7 +642,7 @@ _**Iterator, 이터레이터**_
 **컬렉션을 반복할 수 있게 하는 객체**이다.
 {% endhint %}
 
-### 3. for...in VS for...of 예
+### 3. for...in vs for...of 예제 
 
 {% code title="for...in VS for...of VS \(collection\)" %}
 ```javascript
@@ -619,7 +655,9 @@ for (let i in num) {
     document.write(i);
 }
 
-document.write("<br><br><br>");
+// -- Result --
+// *** for...in 예제 ***
+// 01234
 
 
 // for...of : 값 리턴
@@ -629,7 +667,9 @@ for (let i of num) {
     document.write(i);
 }
 
-document.write("<br><br><br>");
+// -- Result --
+// *** for...of 예제 ***
+// 12345
 
 
 // for...in (collection)
@@ -645,7 +685,9 @@ for (let i in obj1) {
     document.write(i);
 }
 
-document.write("<br><br><br>");
+// -- Result --
+// *** for...in (collection) 예제 ***
+// applebananagrape
 
 
 // for...of (collection)
@@ -667,17 +709,6 @@ for ( let i of obj2 ) {
 }
 
 // -- Result --
-// *** for...in 예제 ***
-// 01234
-
-// *** for...of 예제 ***
-// 12345
-
-
-// *** for...in (collection) 예제 ***
-// applebananagrape
-
-
 // *** for...of (collection) 예제 ***
 // redyellowpurple
 ```
@@ -709,7 +740,7 @@ for ( let i = 0; i < arr12.length; i++ ) {
 
 ## 14. 배열 펼침 연산자 \(Spread Syntax\)
 
-펼침 연산자는 **배열을 펼쳐주는 역할**을 한다. 배열을 바꾸지 않고도 새로운 값을 복사하거나, 배열을 합치거나, 배열을 펼쳐진 상태로 파라미터로 전달하는 등의 활용이 가능해진다. 펼침 연산자의 장점은 기존 컬렉션을 조작하지 않는다는 점이다. 
+펼침 연산자는 **배열을 펼쳐주는 역할**을 한다. 배열을 바꾸지 않고도 새로운 값을 복사하거나, 배열을 합치거나, 배열을 펼쳐진 상태로 파라미터로 전달하는 등의 활용이 가능해진다. 펼침 연산자의 장점은 **기존 컬렉션을 조작하지 않는다는** 점이다.
 
 {% code title="... Spread Syntax" %}
 ```javascript
@@ -724,7 +755,6 @@ document.write(...arr13, "<br>"); // 쉼표가 없이 데이터를 불러옴
 // *** 14 배열 펼침 연산자(Spread Syntax) ***
 // 100,200,javascript
 // 100200javascript
-
 ```
 {% endcode %}
 
@@ -739,11 +769,11 @@ console.log(b); // [100, 200, 300, 400]
 console.log(a === b); // false
 // 새로운 배열로서 메모리에 들어간 복사를 한 형태
 // concat을 이용한 것과 같은 결과
-// 배열을 바꾸지 않고 새로운 값을 복사할 수 있
+// 배열을 바꾸지 않고 새로운 값을 복사할 수 있음 
 
 let c = [...a, 500];
 console.log(c) // [100, 200, 300, 400, 500]
-// 기존의 복잡한 방법 대신 간단하게 값을 추가하여 배열을 복사할 수 있
+// 기존의 복잡한 방법 대신 간단하게 값을 추가하여 배열을 복사할 수 있음 
 ```
 {% endcode %}
 
@@ -786,6 +816,4 @@ document.write(max2, "<br><br><br>");
 // 500
 ```
 {% endcode %}
-
-
 

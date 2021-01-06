@@ -836,7 +836,7 @@ document.write(max2);
 
 ## 17. 배열 메서드 - join\( \)
 
-`join()` 메서드는 **원소를 결합해서 하나의 문자열로 반환**한. 
+**`join()`** 메서드는 **원소를 결합해서 하나의 문자열로 반환**한다. ****
 
 {% code title="Array.prototype.join\(\) Syntax" %}
 ```javascript
@@ -857,9 +857,19 @@ document.write(arr16.join("*"));
 ```
 {% endcode %}
 
+{% code title="join\(\)" %}
+```javascript
+var uint8 = new Uint8Array([1,2,3]);
+
+uint8.join();      // '1,2,3'
+uint8.join(' / '); // '1 / 2 / 3'
+uint8.join('');    // '123'
+```
+{% endcode %}
+
 ## 18. 배열 메서드 - reverse\( \)
 
-`reverse()` 메서드는 **배열을 역순으로 정렬**한다.
+**`reverse()`** 메서드는 **배열을 역순으로 정렬**한다. 첫 번째 배열 요소가 마지막 요소가 되고 마지막 배열 요소가 첫 번째 요소가 된다. 메서드를 사용하는 순간 원본 배열이 바뀐다.
 
 {% code title="Array.prototype.reverse\(\) Syntax" %}
 ```javascript
@@ -882,7 +892,7 @@ document.write(arr16.reverse());
 
 ## 19. 배열 메서드 - sort\( \)
 
-`sort()` 메서드는 **원본 배열을 직접 변경하여 정렬된 배열을 반환**한다. 기본 정렬 순서는 오름차순이며, 내림차순도 가능하다. 이때, 정렬의 순서는 문자열의 유니코드 코드 포인트를 따르는데. 배열의 요소가 숫자여도 배열의 요소를 일시적으로 문자열로 변환한 후 문자열의 **유니코드를 비교하여 정렬**한다.
+**`sort()`** 메서드는 **원본 배열을 직접 변경하여 정렬된 배열을 반환**한다. 기본 정렬 순서는 오름차순이며, 내림차순도 가능하다. 이때, 정렬의 순서는 문자열의 유니코드 코드 포인트를 따르는데. 배열의 요소가 숫자여도 배열의 요소를 일시적으로 문자열로 변환한 후 문자열의 **유니코드를 비교하여 정렬**한다.
 
 `map()` 혹은 `fliter()` 메서드는 원본 배열을 변경하지 않고 새로운 배열을 생성하여 반환한다. 이를 _accessor method_ 라고 한다. 반면, `sort()` 메서드는 원본 배열을 직접 변경하는데 이를 _mutator method_라고 한다. 
 
@@ -935,7 +945,7 @@ document.write(arr16.sort(function (a, b) {
 }));
 
 // -- Result --
-// *** 19 배열 sort 오름차순 정 ***
+// *** 19 배열 sort 오름차순 정렬  ***
 // 100,200,300,400,500
 ```
 {% endcode %}
@@ -946,20 +956,20 @@ document.write(arr16.sort(function (a, b) {
 ```javascript
 const arr16 = [100, 500, 200, 400, 300];
 
-document.write('*** 19 배열 sort 내차순 정 *** <br>'); 
+document.write('*** 19 배열 sort 내차순 정렬 *** <br>'); 
 document.write(arr16.sort(function (a, b) {
     return b - a
 }));
 
 // -- Result --
-// *** 19 배열 sort 내차순 정 ***
+// *** 19 배열 sort 내차순 정렬 ***
 // 500,400,300,200,100
 ```
 {% endcode %}
 
 ##  20. 배열 메서드 - slice\( \)
 
-`slice()` 메서드는 _**start 부터 end 전까**_지의 복사본을 새로운 배열 객체로 반환한다. 원본 배열은 수정되지 않는다.
+**`slice()`** 메서드는 _**start 부터 end 전**_까지의 복사본을 **새로운 배열 객체로 반환**한다. 원본 배열은 수정되지 않는다.
 
 {% code title="Array.prototype.slice\(\) Syntax" %}
 ```javascript
@@ -967,17 +977,17 @@ arr.slice([start[, end]])
 ```
 {% endcode %}
 
-_**start : 추출 시작 점에 대한 인덱 \(포함\)**_
+_**start : 추출 시작 점에 대한 인덱스 \(포함\)**_
 
 * undefined - 0 부터 시작
-* 음수 - 배열의 끝에서 부터 길이를 나타. `slice(-2)` 의 경우, 배열의 마지막 2개를 추출
+* 음수 - 배열의 끝에서 부터 길이를 나타냄 . `slice(-2)` 의 경우, 배열의 마지막 2개를 추출
 * 배열의 길이와 같거나 큰 수 - 빈 배열 반환
 
 _**end : 추출을 종료할 기준의 인덱스 \(제외, end를 제외하고 그 전까지 요소만 추출\)**_
 
 * 지정하지 않음 - 배열의 끝까지 포함
-* 음수 - 배열의 끝에서 부 길이를 나타냄. `slice(1, -2)` 의 경우, 두 번째부터 끝에서 세 번째 요소까지 추출
-* 배열의 길이와 같거나 큰 수 - 배열의 끝 까지 추
+* 음수 - 배열의 끝에서부터 길이를 나타냄. `slice(1, -2)` 의 경우, 두 번째부터 끝에서 세 번째 요소까지 추출
+* 배열의 길이와 같거나 큰 수 - 배열의 끝까지 추출 
 
 {% code title="slice\(\)" %}
 ```javascript
@@ -991,6 +1001,18 @@ document.write(arr16.slice(1, 3));
 // 200, 300
 ```
 {% endcode %}
+
+`slice( )` 메서드 예제를 통해 더욱 자세히 알아보자.
+
+* arr1 : index번호 3부터 4까지 추출
+* arr2 : index번호 0부터 4까지 추출
+* arr3 : 뒤에서 3개 추출
+* arr4 : 뒤에서부터 3번째 숫자인 8부터 추출하기 시작해서 앞에서부터 9번째 숫자\(10\) 전까지 추출하므로 숫자 8과 9 추출
+* arr5 : 배열의 길이가 10이므로 index번호 10부터 추출하면 추출할 요소가 없으므로 빈 배열을 리턴한다.
+* arr6 : index번호 4부터 끝까지 추출
+* arr7 : 처음부터 끝까지 추출함
+* arr8 : index번호 5번인 6부터 추출 시작하여 끝에서부터 -4번째인 7 전까지 추출하므로 숫자 6을 추출
+* arr9 : index번호 2번부터 끝까지 추출
 
 {% code title="slice\(\) 예제" %}
 ```javascript
@@ -1022,19 +1044,9 @@ console.log(arr9); // [3, 4, 5, 6, 7, 8, 9, 10]
 ```
 {% endcode %}
 
-* arr1 : index번호 3부터 4까지 추출
-* arr2 : index번호 0부터 4까지 추출
-* arr3 : 뒤에서 3개 추출
-* arr4 : 뒤에서부터 3번째 숫자인 8부터 추출하기 시작해서 앞에서부터 9번째 숫자\(10\) 전까지 추출하므로 숫자 8과 9 추출
-* arr5 : 배열의 길이가 10이므로 index번호 10부터 추출하면 추출할 요소가 없으므로 빈 배열을 리턴한다.
-* arr6 : index번호 4부터 끝까지 추출
-* arr7 : 처음부터 끝까지 추출함
-* arr8 : index번호 5번인 6부터 추출 시작하여 끝에서부터 -4번째인 7 전까지 추출하므로 숫자 6을 추출
-* arr9 : index번호 2번부터 끝까지 추출
-
 ## 21. 배열 메서드 - concat\( \)
 
-`concat()` 메서드는 두 개 이상의 배열을 병합하는 데 사용한다. 이 메서드는 기존 배열을 변경하지 않고 대신 새 배열을 반환한다.
+**`concat()`** 메서드는 **두 개 이상의 배열을 병합**하는데 사용한다. 이 메서드는 **기존 배열을 변경하지 않고 새 배열을 반환**한다.
 
 {% code title="Array.prototype.concat\(\) Syntax" %}
 ```javascript
@@ -1059,7 +1071,7 @@ document.write(concatArray), "<br><br>");
 
 ## 22. 배열 메서드 - shift\( \)
 
-`shift()` 메서드는 **배열에서 첫 번째 요소를 제거**하고 **제거된 요소를 반환**한다. 이 메서드는 배열의 길이를 변경한다. 메서드가 실행될 때 마다 배열의 길이가 줄어든다.
+**`shift()`** 메서드는 **배열에서 첫 번째 요소를 제거**하고 **제거된 요소를 반환**한다. 이 메서드는 **배열의 길이를 변경**한다. 메서드가 실행될 때 마다 배열의 길이가 줄어든다.
 
 {% code title="Array.prototype.shift\(\) Syntax" %}
 ```javascript
@@ -1067,7 +1079,7 @@ arr.shift()
 ```
 {% endcode %}
 
-{% code title="Array.prototype.shift\(\)" %}
+{% code title="shift\(\) " %}
 ```javascript
 const arr16 = [100, 200, 300, 400, 500];
 
@@ -1082,7 +1094,7 @@ document.write(arr16, "<br>"); // 남아 있는 배열 반환
 
 ##  23. 배열 메서드 - unshift\( \)
 
-`unshift()` 메서드는 **배열의 시작 부분에 하나 이상의 요소를 추가**하고 **배열의 새 길이를 반환**한다.
+**`unshift()`** 메서드는 **배열의 시작 부분에 하나 이상의 요소를 추가**하고 **배열의 새 길이를 반환**한다.
 
 {% code title="Array.prototype.unshift\(\) Syntax" %}
 ```javascript
@@ -1107,7 +1119,7 @@ document.write(arr16, "<br><br>"); // 추가된 배열을 반환
 
 ##  24. 배열 메서드 - pop\( \)
 
-`pop()` 메서드는 **배열에서 마지막 요소를 제거**하고 **해당 요소를 반환**한다. 이 메서드는 배열의 길이를 변경한다.
+**`pop()`** 메서드는 **배열에서 마지막 요소를 제거**하고 **해당 요소를 반환**한다. 이 메서드는 **배열의 길이를 변경**한다.
 
 {% code title="Array.prototype.pop\(\) Syntax" %}
 ```javascript
@@ -1187,7 +1199,7 @@ _**new**_
 생성자, 새로 생기다.
 {% endhint %}
 
-## 27. 객체 방식으로 사용하
+## 27. 객체 방식으로 사용하기 
 
 {% code title="객체 방식으로 사용하기" %}
 ```javascript
@@ -1209,7 +1221,35 @@ document.write(obj2.c, "<br>");
 ```
 {% endcode %}
 
-## 28. 객체 
+## 28. 객체, Object 
+
+### 객체\(Object\)란?
+
+**자바스크립트는 객체\(Object\) 기반의 스크립트 언어이며 자바스크립트를 이루고 있는 거의 "모든 것"이 객체**이다. 원시 타입\(Primitives\)을 제외한 나머지 값들\(함수, 배열, 정규표현식 등\)은 모두 객체이다.
+
+**자바스크립트의 객체는 키\(key\)와 값\(value\)으로 구성된 프로퍼티\(Property\)들의 집합**이다. 프로퍼티의 값으로 자바스크립트에서 사용할 수 있는 모든 값을 사용할 수 있다. 자바스크립트의 함수는 일급 객체이므로 값으로 취급할 수 있다. 따라서 프로퍼티 값으로 함수를 사용할 수도 있으며 프로퍼티 값이 함수일 경우, 일반 함수와 구분하기 위해 메서드라고 부른다.
+
+이와 같이 객체는 데이터를 의미하는 프로퍼티\(Porperty\)와 데이터를 참조하고 조작할 수 있는 동작\(behavior\)을 의미하는 메서드\(method\)로 구성된 집합이다. 객체는 데이터\(프로퍼티\)와 그 데이터에 관련되는 동작\(메서드\)을 모두 포함할 수 있기 때문에 데이터와 동작을 하나의 단위로 구조화할 수 있어 유용하다.
+
+자바스크립트의 객체는 객체지향의 상속을 구현하기 위해 프로토타입\(Prototype\)이라고 불리는 객체의 프로퍼티와 메서드를 상속받을 수 있다. 이 프로토타입은 타 언어와 구별되는 중요한 개념이다.
+
+{% hint style="info" %}
+_**원시 타입\(Primitives\)**_   
+자바스크립트는 포로토타입 객체 지향 언어로 클래스라는 개념이 없다. 하지만 ES6부터는 클래스를 대체하는 타입이라는 개념이 등장했다. 타입에는 원시 타입과 참조 타입이 있다.
+{% endhint %}
+
+### 프로퍼티
+
+프로퍼티는 프로퍼티 키\(이름\)와 프로퍼티 값으로 구성된다. 프로퍼티는 프로퍼티 키로 유일하게 식별할 수 있다. 즉, 프로퍼티 키는 프로퍼티를 식별하기 위한 식별자\(identifier\)다. 프로퍼티 키의 명명 규칙과 프로퍼티 값으로 사용할 수 있는 값은 아래와 같다.
+
+* 프로퍼티 키 : 빈 문자열을 포함하는 모든 문자열 또는 symbol 값
+* 프로퍼티 값 : 모든 값
+
+프로퍼티 키에 문자열이나 symbol 값 이외의 값을 지정하면 암묵적으로 타입이 변환되어 문자열이 된다. 이미 존재하는 프로퍼티 키를 중복 선언하면 나중에 선언한 프로퍼티가 먼저 선언한 프로퍼티를 덮어쓴다. 배열과는 달리 객체는 프로퍼티를 열거할 때 순서를 보장하지 않는다.
+
+### 메서드
+
+프로퍼티 값이 함수일 경우, 일반 함수와 구분하기 위해 메서드라 부른다. 즉, 메서드는 객체에 제한되어 있는 함수를 의미한다.
 
 {% code title="객체" %}
 ```javascript
@@ -1233,6 +1273,30 @@ document.write(obj3.c, "<br><br>");
 
 ## 29. 객체의 정석 
 
+### 객체 리터럴 
+
+가장 일반적인 자바스크립트의 객체 생성 방식이다. 클래스 기반 객체 지향 언어와 비교할 때 매우 간편하게 생성할 수 있다. **중괄호{ }를 사용하여 객체를 생성**하는데 { } 내에 1개 이상의 프로퍼티를 기술하면 해당 프로퍼티가 추가된 객체를 생성할 수 있다. { } 내에 아무것도 기술하지 않으면 빈 객체가 생성된다.
+
+{% code title="객체 리터럴" %}
+```javascript
+var object = {};
+console.log(typeof object); // object
+
+var person = {
+    name: "Kim",
+    gender: "female",
+    myName: function () {
+        console.log("My name is " + this.name);
+    }
+};
+
+console.log(typeof person); // object
+console.log(person);
+
+person.myName(); // My name is Kim
+```
+{% endcode %}
+
 {% code title="객체의 정석" %}
 ```javascript
 const obj4 = {
@@ -1253,6 +1317,120 @@ document.write(obj4.c, "<br><br><br>");
 // javascript
 ```
 {% endcode %}
+
+### Object 생성자 함수 
+
+_**new**_ 연산자와 \*\*\*Object 생성자 함수\*\*\*를 호출하여 빈 객체를 생성할 수 있다. 빈 객체 생성 이후 프로퍼티 또는 메서드를 추가하여 객체를 완성하는 방법이다.
+
+**생성자\(constructor\) 함수란** _**new**_ **키워드와 함께 객체를 생성하고 초기화하는 함수**를 말한다. 생성자 함수를 통해 생성된 객체를 인스턴스\(instance\)라 한다. 자바스크립트는 Object 생성자 함수 이외에도 String, Number, Boolean, Array, Date, RegExp 등의 빌트인 생성자 함수를 제공한다. 일반 함수와 생성자 함수를 구분하기 위해 생성자 함수의 이름을 파스칼 케이스\(PascalCase\)를 사용하는 것이 일반적이다.
+
+객체가 소유하고 있지 않은 프로퍼티 키에 값을 할당하면 해당 객체에 프로퍼티를 추가하고 값을 할당한다. 이미 존재하는 프로퍼티 키에 새로운 값을 할당하면 프로퍼티 값은 할당한 값으로 변경된다.
+
+{% code title="Obejct 생성자 함수" %}
+```javascript
+// 빈 객체의 생성
+var person = new Object();
+
+// 프로퍼티 추가
+person.name = "Kim";
+person.gender = "female";
+person.myName = function () {
+    console.log("My name is " + this.name);
+};
+
+console.log(typeof person); // obejct
+console.log(person); // {name: "Kimg", gender: "female", myName: f}
+
+person.myName(); // My name is Kim
+```
+{% endcode %}
+
+반드시 Object 생성자 함수를 사용해 빈 객체를 생성해야 하는 것은 아니다. 객체를 생성하는 방법은 객체 리터럴을 사용하는 것이 더 간편하다. Object 생성자 함수 방식은 특별한 이유가 없다면 그다지 유용해 보이지 않는다.
+
+사실 **객체 리터럴 방식으로 생성된 객체는 결국 빌트인\(Built-in\) 함수인 Object 생성자 함수로 객체를 생성하는 것을 단순화시킨 축약 표현**이다. 다시 말해, 자바스크립트 엔진은 객체 리터럴로 객체를 생성하는 코드를 만나면 내부적으로 Object 생성자 함수를 사용하여 객체를 생성한다. 따라서 개발자가 일부러 Object 생성자 함수를 사용해 객체를 생성해야 할 일은 거의 없다.
+
+### 생성자 함수
+
+객체 리터럴 방식과 Object 생성자 함수 방식으로 객체를 생성하는 것은 프로퍼티 값만 다른 여러 개의 객체를 생성할 때 불편하다. 동일한 프로퍼티를 갖는 객체 임에도 불구하고 매전 같은 프로퍼티를 기술해야 한다.
+
+{% code title="객체 리터럴 방식, Object 생성자 함수 방식" %}
+```javascript
+var person1 = {
+    name: "Kim",
+    gender: "female",
+    myName: function () {
+        console.log("My name is " + this.name);
+    }
+};
+
+var person2 = {
+    name: "Han",
+    gender: "male",
+    myName: function () {
+        console.log("My name is " + this.name);
+    }
+};
+```
+{% endcode %}
+
+생성자 함수를 사용하면 마치 객체를 생성하기 위한 탬플릿\(클래스\)처럼 사용하여 프로퍼티가 동일한 객체 여러 개를 간편하게 생성할 수 있다.
+
+{% code title="생성자 함수" %}
+```javascript
+// 생성자 함수
+function Person (name, gender) {
+    this.name = name;
+    this.gender = gender;
+    this.myName = function () {
+        console.log("My name is " + this.name);
+    };
+};
+
+// 인스턴스의 생성
+var person1 = new Person("Kim", "female");
+var person2 = new Person("Han", "male");
+
+console.log("person1: ", typeof person1); // person1: object
+console.log("person2: ", typeof person2); // person2: object
+console.log("person1: ", person1); // person1: object
+console.log("person2: ", person2); // person2: object
+
+person1.myName(); // My name is Kim
+person2.myName(); // My name is Han
+```
+{% endcode %}
+
+* 생성자 함수 이름은 일반적으로 대문자로 시작한다. 이것은 생성자 함수임을 인식하도록 도움을 준다.
+* 프로퍼티 또는 메서드 명 앞에 기술한 `this` 는 생성자 함수가 생성할 인스턴스\(instance\)를 가르킨다.
+* `this` 에 연결\(바인딩\)되어 있는 프로퍼티와 메서드는 `public` \(외부에서 참조 가능\)하다.
+* 생성자 함수 내에서 선언된 일반 변수 `private` \(외부에서 참조 불가능\) 하다. 즉, 생성자 함수 내부에서는 자유롭게 접근이 가능하나 외부에서 접근할 수 없다.
+
+{% code title="생성자 함수" %}
+```javascript
+function Person (name, gender) {
+    var married = true;         // private
+    this.name = name;           // public
+    this.gender = gender;       // public
+    this.myName = function () { // public
+        console.log("My name is " + this.name);
+    };
+};
+
+var person1 = new Person("Kim", "female");
+
+console.log(typeof person); // obejct
+console.log(person); // Person {name: "Kimg", gender: "female", myName: f}
+
+console.log(person.gender); // "female"
+console.log(person.married); // undefined
+```
+{% endcode %}
+
+자바 스크립트의 생성자 함수는 이름 그대로 객체를 생성하는 함수이다. 하지만 자바와 같은 클래스 기반 객체지향 언어의 생성자\(constructor\)와는 다르게 그 형식이 정해져 있는 것이 아니라 기존 함수와 동일한 방법으로 생성자 함수를 선언하고 `new` 연산자를 붙여서 호출하면 해당 함수는 생성자 함수로 동작한다.
+
+이는 생성자 함수가 아닌 일반 함수에 `new` 연산자를 붙여 호출하면 생성자 함수처럼 동작할 수 있다는 것을 의미한다. 따라서 일반적으로 생성자 함수명은 첫문자를 대문자로 기술하여 혼란을 방지하려는 노력을 한다.
+
+`new` 연산자와 함께 함수를 호출하면 `this` 바인딩이 다르게 동작한다. 생성자 호출 패턴을 참조하자.
 
 ## 30. 객체 \(배열 속의 객체\)
 
@@ -1427,11 +1605,11 @@ document.write(obj9.name2, "<br><br><br>");
 ```
 {% endcode %}
 
-## 35. 객체 리터럴 \(객체 초기화\) - 데이터 값을 객에 저장
+## 35. 객체 리터럴 \(객체 초기화\) - 데이터 값을 객체에 저장
 
 {% code title="객체 리터럴 \(객체 초기화\) - 데이터 값을 객에 저장" %}
 ```javascript
-// 객
+// 객체 
 const obj10 = {
     name1: "array",
     name2: "object"
@@ -1485,7 +1663,7 @@ const name2 = obj10.name2;
 {% endcode %}
 
 {% hint style="info" %}
-React 에서 많이 사용하는 방법이다.
+_React 에서 많이 사용하는 방법이**다.**_
 {% endhint %}
 
 ## 37. 배열 구조 분해 할당 \(데이터를 뽑아내는 방법\)
@@ -1518,7 +1696,7 @@ const name2 = arr18[1];
 ```
 {% endcode %}
 
-## 38. 객체 펼침 연산
+## 38. 객체 펼침 연산자 
 
 {% code title="객체 펼침 연산자" %}
 ```javascript
@@ -1544,7 +1722,7 @@ document.write(newSpread.nameB, "<br><br><br>");
 React, Vue 에서 많이 사용하는 방법이다.
 {% endhint %}
 
-## 39. 객체 펼침 연산
+## 39. 객체 펼침 연산자 \(프로퍼티 추가\) 
 
 {% code title="객체 펼침 연산자" %}
 ```javascript
@@ -1601,7 +1779,7 @@ document.write(newSpread, "<br><br><br>");
 ```
 {% endcode %}
 
-## \* 데이터 저장 데이터 출력
+## \* 데이터 저장, 데이터 출력
 
 1. 데이터 저장
 
@@ -1666,6 +1844,8 @@ func3();
 {% endcode %}
 
 ## 45. 리턴 값이 있는 함수 
+
+**리턴 값이 있는 함수는 결과 값이 있는 함수**이다. `return` 이라는 키워드를 이용하여 함수의 결과 값을 출력하는 방법이다. 리턴 값은 실행문을 강제로 종료하는 역할도 한다. 
 
 {% code title="리턴 값이 있는 함수" %}
 ```javascript
@@ -1814,7 +1994,7 @@ d();
 
 ## 48-3. 콜백 함수 
 
-a 가 실행된 후, b 가 실행된다. 즉, 동기\(순서\)를 맞추기 위한 것이다. 정식 법이 아니다.
+a 가 실행된 후, b 가 실행된다. 즉, **동기\(순서\)를 맞추기 위한 것**이다. 정식 법이 아니다.
 
 {% code title="콜백 함수" %}
 ```javascript

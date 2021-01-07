@@ -87,12 +87,12 @@ var a = 200;
 
 // let
 let b = 100;
-let b = 200; // Uncaught SyntaxError: Identifier 'a' has already been declared
+let b = 200; // Uncaught SyntaxError: Identifier 'b' has already been declared
 b = 300; // 가능
 
 // const
 const c = 100;
-const c = 200;// Uncaught SyntaxError: Identifier 'a' has already been declared
+const c = 200;// Uncaught SyntaxError: Identifier 'c' has already been declared
 c = 300; // Uncaught TypeError:Assignment to constant variable.
 ```
 {% endcode %}
@@ -548,7 +548,7 @@ console.log(aa);
 {% code title="for...in 문" %}
 ```javascript
 for (variable in object) {
-  statements : 객에 열거할 수 있는 모든 프로퍼티의 개수만큼 반복적으로 실행하고자 하는 실행문;
+  statements : 객체에 열거할 수 있는 모든 프로퍼티의 개수만큼 반복적으로 실행하고자 하는 실행문;
 }
 ```
 {% endcode %}

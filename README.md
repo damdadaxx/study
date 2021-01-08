@@ -522,7 +522,7 @@ console.log(aa);
 const a = ["a", "b"];
 aa = a.map( elem => {
   console.log(elem);
-  return "alphabet" + a;
+  return "alphabet " + elem;
 });
 console.log(aa);
 
@@ -1311,7 +1311,7 @@ document.write(obj4.b, "<br>");
 document.write(obj4.c, "<br><br><br>");
 
 // -- Result --
-// *** 29 객체의 정 ***
+// *** 29 객체의 정석 ***
 // 100
 // 200
 // javascript
@@ -1351,7 +1351,7 @@ person.myName(); // My name is Kim
 
 ### 생성자 함수
 
-객체 리터럴 방식과 Object 생성자 함수 방식으로 객체를 생성하는 것은 프로퍼티 값만 다른 여러 개의 객체를 생성할 때 불편하다. 동일한 프로퍼티를 갖는 객체 임에도 불구하고 매전 같은 프로퍼티를 기술해야 한다.
+객체 리터럴 방식과 Object 생성자 함수 방식으로 객체를 생성하는 것은 프로퍼티 값만 다른 여러 개의 객체를 생성할 때 불편하다. 동일한 프로퍼티를 갖는 객체 임에도 불구하고 매번 같은 프로퍼티를 기술해야 한다.
 
 {% code title="객체 리터럴 방식, Object 생성자 함수 방식" %}
 ```javascript

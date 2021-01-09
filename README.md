@@ -1418,11 +1418,14 @@ function Person (name, gender) {
 
 var person1 = new Person("Kim", "female");
 
-console.log(typeof person); // obejct
-console.log(person); // Person {name: "Kimg", gender: "female", myName: f}
-
-console.log(person.gender); // "female"
-console.log(person.married); // undefined
+console.log(typeof person1); // obejct
+console.log(Person); // ƒ Person (name, gender) {
+							               // var married = true;
+							               // this.name = name;
+							               // this.gender = gender;
+							               // this.myNmae = function() {							                    
+console.log(person1.gender); // "female"
+console.log(person1.married); // undefined
 ```
 {% endcode %}
 
@@ -1599,7 +1602,7 @@ document.write(obj9.name1, "<br>");
 document.write(obj9.name2, "<br><br><br>");
 
 // -- Result --
-// *** 34 객체 리터럴(객체 초기화) - 데이터 값을 변수에 저 ***
+// *** 34 객체 리터럴(객체 초기화) - 데이터 값을 변수에 저장 ***
 // array
 // object
 ```
@@ -1607,7 +1610,7 @@ document.write(obj9.name2, "<br><br><br>");
 
 ## 35. 객체 리터럴 \(객체 초기화\) - 데이터 값을 객체에 저장
 
-{% code title="객체 리터럴 \(객체 초기화\) - 데이터 값을 객에 저장" %}
+{% code title="객체 리터럴 \(객체 초기화\) - 데이터 값을 객체에 저장" %}
 ```javascript
 // 객체 
 const obj10 = {
@@ -1623,7 +1626,7 @@ document.write(name1, "<br>");
 document.write(name2, "<br><br><br>");
 
 // -- Result --
-// *** 35 객체 리터럴(객체 초기화) -데이터 값을 객체에 저 ***
+// *** 35 객체 리터럴(객체 초기화) -데이터 값을 객체에 저장  ***
 // array
 // object
 ```

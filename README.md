@@ -1795,6 +1795,18 @@ document.write(newSpread, "<br><br><br>");
 
 ## 42. 선언적 함수 
 
+가장 기본적으로 사용하는 함수의 형태이다. 기본적으로 함수는 함수 이름을 설정하고 함수 이름을 호출해야 실행된다.
+
+{% code title="선언적 함수 Syntax" %}
+```javascript
+function 함수이름() {
+    // 실행 코드
+}
+
+함수이름(); // 함수 호
+```
+{% endcode %}
+
 {% code title="선언적 함수" %}
 ```javascript
 function func1() {
@@ -1812,7 +1824,19 @@ func1();
 
 ## 43. 익명 함수
 
-**익명 함수**란 **함수의 이름을 지정할 때, 변수의 이름을 빌려서 사용**하는 것이다.
+**익명 함수**란 **함수의 이름을 지정할 때, 변수의 이름을 빌려서 사용**하는 것이다. 
+
+익명 함수는 함수에 이름이 없기 때문에 변수에 넣어서 사용하는 함수이다. 변수에는 숫자, 문자도 들어갈 수 있지만 함수도 들어갈 수 있다.
+
+{% code title="익명 함수 Syntax" %}
+```javascript
+var 변수이름 = function(){
+     //실행 코드
+}
+
+변수이름(); //함수 호출
+```
+{% endcode %}
 
 {% code title="익명 함수" %}
 ```javascript
@@ -1918,6 +1942,63 @@ function func5() {
 
 {% code title="콜백 함수" %}
 ```javascript
+function func6() {
+    document.write("func6이 실행되었습니다. <br><br>");
+}
+
+// callback안에 매개변수를 넣어주고, 매개변수를 함수화 시킴.
+function callback(text) {
+    text(); // 매개 변수를 함수화 시킴
+}
+
+document.write("*** 47 콜백 함수 *** <br>");
+
+// 실행 함수 안에 매개변수를 함수화 시킴
+callback(func6);
+
+// -- Result --
+// *** 47 콜백 함수 ***
+// func6이 실행되었습니다.
+```
+{% endcode %}
+
+## 48. 콜백 함
+
+**함수를 변수 혹은 매개변수인 것처럼 처리**를 한다.
+
+{% code title="콜백 함수" %}
+```javascript
+function func7() {
+    document.write("func7이 실행되었습니다.<br>");
+};
+
+function callback(num) {
+    for( let i = 1; i <= 10; i++ ) {
+        num(i);
+    }
+};
+
+document.write("*** 48 콜백 함수 *** <br>");
+
+callback(func7);
+
+// -- Result --
+// *** 48 콜백 함수 ***
+// func7이 실행되었습니다.
+// func7이 실행되었습니다.
+// func7이 실행되었습니다.
+// func7이 실행되었습니다.
+// func7이 실행되었습니다.
+// func7이 실행되었습니다.
+// func7이 실행되었습니다.
+// func7이 실행되었습니다.
+// func7이 실행되었습니다.
+// func7이 실행되었습니다.
+```
+{% endcode %}
+
+{% code title="콜백 함수" %}
+```javascript
 function callback(num) {
     for ( let i = 0; i <= 10; i++ ) {
         num(i);
@@ -1964,9 +2045,31 @@ function b() {
 a();
 b();
 
-// -- Result --
+// -- RESULT --
 // a
 // b
+```
+{% endcode %}
+
+{% code title="콜백 함수\(동기\)" %}
+```javascript
+function funcA() {
+    document.write("funcA가 실행되었습니다. <br>");
+};
+
+function funcB() {
+    document.write("funcB가 실행되었습니다. <br>");
+};
+
+document.write("*** 48-1 콜백 함수(동기) *** <br>");
+
+funcA();
+funcB();
+
+// -- RESULT --
+// *** 48-1 콜백 함수(동기) ***
+// funcA가 실행되었습니다.
+// funcB가 실행되었습니다.
 ```
 {% endcode %}
 
@@ -1989,9 +2092,37 @@ function d() {
 c();
 d();
 
-// -- Result --
+// -- RESULT --
 // d
 // c
+```
+{% endcode %}
+
+**비동기 콜백 함수**는 A를 실행한 후 싹 다 **초기화**되어버린다.
+
+{% code title="콜백 함수 \(비동기\)" %}
+```javascript
+function funcA() {
+    setTimeout(function() {
+        document.write("funcA가 실행되었습니다. <br>");
+    }, 1000);
+};
+
+function funcB() {
+    document.write("funcB가 실행되었습니다. <br>");
+};
+
+document.write("*** 48-1 콜백 함수(비동기) *** <br>");
+
+funcA();
+funcB();
+
+// -- RESULT --
+// *** 48-1 콜백 함수(비동기) ***
+// funcB가 실행되었습니다. 
+
+// 이 후에 모든 출력이 사라지고 아래와 같이 funcA만 실행 된다.
+// // funcA가 실행되었습니다.
 ```
 {% endcode %}
 
@@ -2017,9 +2148,36 @@ a(function(){
     b();
 });
 
-// -- Result --
+// -- RESULT --
 // a
 // b
+```
+{% endcode %}
+
+{% code title="콜백 함수\(동기\)" %}
+```javascript
+function funcA(callback) {
+    setTimeout(function() {
+        document.write("funcA가 실행되었습니다. <br>");
+        callback();
+    }, 1000);
+};
+
+function funcB() {
+    document.write("funcB가 실행되었습니다. <br>");
+};
+
+document.write("*** 48-2 콜백 함수(동기) *** <br>");
+
+funcA(function(){
+    funcB();
+});
+
+// -- RESULT --
+// *** 48-2 콜백 함수(동기) ***
+// 이후 모든 출력이 사라지고 아래와 같이 출력 된다.
+// funcA가 실행되었습니다.
+// funcB가 실행되었습니다. 
 ```
 {% endcode %}
 
@@ -2062,11 +2220,794 @@ a(function () {
     });
 });
 
-// -- Result --
+// -- RESULT --
 // a
 // b
 // c
 // d
+```
+{% endcode %}
+
+## 49. 즉시 실행 함수
+
+**즉시 실행 함수**는 이름 그대로 **즉시 실행 함수**이다. 즉, **선언과 동시에 실행**이 된다. 호출 함수를 생략한다.
+
+{% code title="즉시 실행 함수 " %}
+```javascript
+(function() {
+    console.log();
+}());
+```
+{% endcode %}
+
+기존의 함수 호출 방식과는 다르게 선언과 동시에 실행되는 즉시 실행 함수이다. 또한, 내부에 있는 변수를 외부에서의 접근을 통제할 수 있다. 이러한 이유로 즉시 실행 함수는 플러그인이나 라이브러리에 많이 사용하고 있다. 이러한 플러그인이나 라이브러리 같은 경우는 변수에 추가하지 않아도 되기에 코드 충돌을 방지할 수 있고, 외부 접근을 통제할 수 있도록 하기 위해 즉시 실행 함수를 이용한다.
+
+```javascript
+// 외부 허용
+
+var fn = (function() {
+  var name = "lee";
+  
+  return {
+    name: name
+  }
+}());
+
+console.log(fn.name); // lee
+
+
+//외부 허용 x
+(function(){
+  var name = "lee";
+  
+  return {
+    name: name
+  }
+}())
+```
+
+{% code title="일반 함수와 즉시 실행 함수" %}
+```javascript
+// 일반 함수 호
+
+function func8() {
+    document.write("func8이 실행되었습니다. <br><br><br>");
+};
+
+document.write("*** 49 즉시 실행 함수 *** <br>");
+
+func8();
+
+// -- RESULT --
+// *** 49 즉시 실행 함수 ***
+// func8이 실행되었습니다.
+
+
+// 즉시 실행 함수 : 호출 함수 생략 
+(function () {
+    document.write("*** 49 즉시 실행 함수 *** <br>");
+    document.write("func8이 실행되었습니다. <br><br><br>");
+}());
+
+// -- RESULT --
+// *** 49 즉시 실행 함수 ***
+// func8이 실행되었습니다.
+```
+{% endcode %}
+
+## 50. 화살표 함수 \(선언적 함수\)
+
+화살표 함수는 `function` 키워드 대신 화살표\(=&gt;\)를 사용하여 좀 더 간단하게 함수를 사용할 수 있는 함수이다.
+
+{% code title="Arrow Function Syntax" %}
+```javascript
+() => {
+    // 실행문
+};
+```
+{% endcode %}
+
+### 화살표 함수 규칙 
+
+* 매개 변수가 하나인 경우 괄호를 생략할 수 있음 
+* 매개 변수가 두 개 이상인 경우 괄호를 생략할 수 없음
+* 코드 블록을 지정하지 않고 한 문장으로 작성 시 return 문은 생략할 수 있음 
+* 코드 블록을 지정했을 경우 return 문은 생략할 수 없음.
+
+{% code title="선언적 함수" %}
+```javascript
+// 선언적 함
+function func9() {
+    document.write("*** 50 화살표 함수 *** <br>");
+    document.write("func9이 실행되었습니다.");
+};
+
+func9();
+
+// -- RESULT --
+// *** 50 화살표 함수 ***
+// func9이 실행되었습니다.
+```
+{% endcode %}
+
+{% code title="화살표 함수 \(선언적 함수\)" %}
+```javascript
+// 화살표 함수 (선언적 함수)
+
+func9 = () => {
+    document.write("*** 50 화살표 함수 *** <br>");
+    document.write("func9이 실행되었습니다.");
+};
+
+func9();
+
+// -- RESULT --
+// *** 50 화살표 함수 ***
+// func9이 실행되었습니다.
+```
+{% endcode %}
+
+## 51. 화살표 함수 \(익명 함수\)
+
+{% code title="익명 함수" %}
+```javascript
+// 익명 함수
+const func10 = function () {
+    document.write("*** 51 화살표 함수(익명 함수) *** <br>");
+    document.write("func10이 실행되었습니다. <br><br><br>");
+};
+
+func10();
+
+// -- RESULT --
+// *** 51 화살표 함수(익명 함수) ***
+// func10이 실행되었습니다.
+```
+{% endcode %}
+
+{% code title="화살표 함수 \(익명 함수\)" %}
+```javascript
+// 화살표 함수 (익명 함수)
+
+const func10 = () => {
+    document.write("*** 51 화살표 함수(익명 함수) *** <br>");
+    document.write("func10이 실행되었습니다. <br><br><br>");
+};
+
+func10();
+
+// -- RESULT --
+// *** 51 화살표 함수(익명 함수) ***
+// func10이 실행되었습니다.
+```
+{% endcode %}
+
+## 52. 화살표 함수 \(리턴 값이 있는 함수\)
+
+{% code title="리턴 값이 있는 함수" %}
+```javascript
+// 리턴 값이 있는 함수
+
+function func11() {
+    const str = "func11이 실행되었습니다. <br><br>";
+    return str;
+};
+
+document.write("*** 52 화살표 함수(리턴 값이 있는 함수) *** <br>");
+document.write(func11());
+
+// -- RESULT --
+// *** 52 화살표 함수(리턴 값이 있는 함수) ***
+// func11이 실행되었습니다.
+```
+{% endcode %}
+
+```javascript
+// 화살표 함수 (리턴 값이 있는 함수)
+
+const func11 = () => {
+    const str = "func11이 실행되었습니다. <br><br>";
+    return str;
+};
+
+document.write("*** 52 화살표 함수(리턴 값이 있는 함수) *** <br>");
+document.write(func11());
+
+// -- RESULT --
+// *** 52 화살표 함수(리턴 값이 있는 함수) ***
+// func11이 실행되었습니다.
+```
+
+## 53. 화살표 함수 \(리턴값 + 매개변수\)
+
+{% code title="화살표 함수 \(리턴값 + 매개변수\)" %}
+```javascript
+// 화살표 함수 (리턴값 + 매개변수)
+
+const func12 = (str) => {
+    return str;
+}
+
+document.write("*** 53 화살표 함수(리턴값 + 매개변수) *** <br>");
+document.write(func12("func12이 실행되었습니다. <br><br>"));
+
+// -- RESULT --
+// *** 53 화살표 함수(리턴값 + 매개변수) ***
+// func12이 실행되었습니다.
+```
+{% endcode %}
+
+## 54. 화살표 함수 \(리턴값 + 매개변수 생략\)
+
+{% code title="화살표 함수 \(리턴값 + 매개변수 생략\)" %}
+```javascript
+// 화살표 함수 (리턴값 + 매개변수 생략)
+
+const func13 = str => {
+    return str;
+}
+
+document.write("*** 54 화살표 함수(리턴값 + 매개변수 생략) *** <br>");
+document.write(func13("func13이 실행되었습니다. <br><br>"));
+
+// -- RESULT --
+// *** 53 화살표 함수(리턴값 + 매개변수) ***
+// func12이 실행되었습니다.
+```
+{% endcode %}
+
+## 55. 화살표 함수 \(리턴값 생략 + 매개변수 생략\)
+
+{% code title="화살표 함수 \(리턴값 생략 + 매개변수 생략\)" %}
+```javascript
+// 화살표 함수 (리턴값 생략 + 매개변수 생략)
+
+const func14 = str => str;
+
+document.write("*** 55 화살표 함수(리턴값 생략 + 매개변수 생략) *** <br>");
+document.write(func14("func14이 실행되었습니다. <br><br>"));
+
+// -- RESULT --
+// *** 55 화살표 함수(리턴값 생략 + 매개변수 생략) ***
+// func14이 실행되었습니다.
+```
+{% endcode %}
+
+{% hint style="info" %}
+_**React 에서 많이 사용.**_
+{% endhint %}
+
+## 56. Default Parameters
+
+{% code title="Default Parameters 기본 문법" %}
+```javascript
+// Default Parameters 기본 문법
+
+function func15(str) {
+    if (str == null) {
+        str = "func15이 실행되었습니다. <br><br>";
+        document.write(str);
+    }
+};
+
+func15();
+
+// -- RESULT --
+// *** 56 Default Parameters ***
+// func15이 실행되었습니다.
+```
+{% endcode %}
+
+{% code title="Default Parameters 최신 문법" %}
+```javascript
+// 최신 문법 : 파라미터로 디폴트 값을 넘겨줄 수 있음
+
+function func15(str = "func15이 실행되었습니다. <br><br>") {
+    document.write(str);
+};
+
+document.write("*** 56 Default Parameters *** <br>");
+func15();
+
+// -- RESULT --
+// *** 56 Default Parameters ***
+// func15이 실행되었습니다.
+```
+{% endcode %}
+
+## 57. 조건부 연산자 함수\(Ternary Operator\) = 삼항 연산자
+
+{% code title="조건부 연산자 함수, if else 문" %}
+```javascript
+// 조건부 연산자 함수, if else 문
+
+let Ternary = true; // true
+// let Ternary = false; // flase
+// let Ternary = undefined; // flase
+// let Ternary = null; // false
+// let Ternary = []; // true
+// let Ternary = ''; // false
+// let Ternary = 0; // false
+
+function func16() {
+
+    if (Ternary) {
+        document.write("func16 true가 실행되었습니다. <br><br>");
+    } else {
+        document.write("func16 false가 실행되었습니다. <br><br>");
+    }
+ 
+ };
+ 
+document.write("*** 57 조건부 연산자 함수(Ternary Operator) = 삼항 연산자 *** <br>");
+func16();
+
+// -- RESULT --
+// *** 57 조건부 연산자 함수(Ternary Operator) = 삼항 연산자 ***
+// func16 true가 실행되었습니다.
+
+```
+{% endcode %}
+
+{% code title="조건부 연산자 함수, 삼항 연산자" %}
+```javascript
+// 조건부 연산자 함수, 삼항 연산자
+
+let Ternary = true; // true
+// let Ternary = false; // flase
+// let Ternary = undefined; // flase
+// let Ternary = null; // false
+// let Ternary = []; // true
+// let Ternary = ''; // false
+// let Ternary = 0; // false
+
+function func16() {
+
+    Ternary ? document.write("True <br><br>") : document.write("False <br><br>");
+ 
+document.write("*** 57 조건부 연산자 함수(Ternary Operator) = 삼항 연산자 *** <br>");
+func16();
+
+// -- RESULT --
+// *** 57 조건부 연산자 함수(Ternary Operator) = 삼항 연산자 ***
+// True
+```
+{% endcode %}
+
+## 58. 템플릿 리터럴 \(Template Literals\)
+
+**템플릿 리터럴은 백틱\(backtick\) 문자 ````` 를 사용하여 새로운 문자열을 삽입**할 수 있는 기능을 제공한다. 이를 문자열 인터폴레이션\(String Interpolation\)이라 한다.
+
+{% code title="템플릿 리터럴 \(Template Literals\) Syntax" %}
+```javascript
+`${ … }`
+```
+{% endcode %}
+
+{% code title="일반 함수" %}
+```javascript
+// 일반 함수
+
+function func17(name) {
+    document.write("func17이 실행되었습니다. <br><br>");
+};
+
+document.write("*** 58 템플릿 리터럴(Template Literals) *** <br>");
+func17();
+
+// -- RESULT --
+// *** 58 템플릿 리터럴(Template Literals) ***
+// func17이 실행되었습니다.
+```
+{% endcode %}
+
+{% code title="템플릿 리터럴 \(Template Literals\)" %}
+```javascript
+// 템플릿 리터럴 (Template Literals)
+
+function func17(name) {
+    document.write("1. " + name + "이 실행되었습니다. <br>");
+    document.write(`2. ${name}이 실행되었습니다. <br><br>`);
+};
+
+document.write("*** 58 템플릿 리터럴(Template Literals) *** <br>");
+func17("func17");
+
+// -- RESULT --
+// *** 58 템플릿 리터럴(Template Literals) ***
+// 1. func17이 실행되었습니다.
+// 2. func17이 실행되었습니다.
+```
+{% endcode %}
+
+## 59. 템플릿 리터럴 \(Template Literals\)
+
+{% code title="템플릿 리터럴 \(Template Literals\)" %}
+```javascript
+// 템플릿 리터럴 (Template Literals)
+
+const func18 = [
+    { name: "1. func18", result: "실행되었습니다."},
+    { name: "2. func18", result: "실행되었습니다."},
+]
+
+const result =
+    `${func18[0].name}가 ${func18[0].result} <br>
+     ${func18[1].name}가 ${func18[1].result}`;
+
+document.write("*** 59 템플릿 리터럴(Template Literals) *** <br>");
+document.write(result);
+
+// -- RESULT --
+// *** 59 템플릿 리터럴(Template Literals) ***
+// 1. func18가 실행되었습니다.
+// 2. func18가 실행되었습니다.
+```
+{% endcode %}
+
+## 60. 템플릿 리터럴 \(Template Literals\)
+
+{% code title="템플릿 리터럴 \(Template Literals\)" %}
+```javascript
+// 템플릿 리터럴 (Template Literals)
+
+const func19 = (str) => {
+    document.write(`${str}`);
+};
+
+document.write("*** 60 템플릿 리터럴(Template Literals) *** <br>");
+func19("func19 함수가 실행되었습니다.");
+
+// -- RESULT --
+// *** 60 템플릿 리터럴(Template Literals) ***
+// func19 함수가 실행되었습니다.
+```
+{% endcode %}
+
+##  변수, 배열, 객체, 함수, 객체 지향 함수, 클래
+
+* 변수 : 데이터를 저장하는 곳\(한 개\), 변수가 변함
+* 상수 : 데이터를 저장하는 곳\(한 개\), 변수가 변하지 않
+* 배열 : 데이터를 저장하는 곳\(두  개 이상\)
+* 객체 : 데이터를 저장하는 곳\(두 개 이상, "키, 값"\)  
+* 함수 : 데이터 실행\(출력\)
+* 객체 + 함수 : 객체 지향 함수
+* 클래스 : 함수의 집합체 &gt; 클래스 함수 &gt; 최종 &gt; 프레임웍\(리액트, 뷰, 앵귤러\)
+* 데이터 베이스 : MySQL, Firebase, aws, ajax, json, API
+
+## 61. 객체 + 함수 \(매개 변수로 출력하기\)
+
+{% code title="객체 + 함수 \(매개 변수로 출력하기\)" %}
+```javascript
+// 객체 + 함수 (매개 변수로 출력하기)
+
+function func20(num, name, job) {
+    document.write( num + ". 내 이름은 " + name + "이며, 직업은 " + job + "입니다. <br>");
+};
+
+document.write("*** 61 객체 + 함수 (매개 변수로 출력하기) *** <br>");
+
+func20("1", "웹스", "웹 퍼블리셔");
+func20("2", "웹스토리보이", "프론트앤드 개발자");
+
+// -- RESULT --
+// *** 61 객체 + 함수 (매개 변수로 출력하기) ***
+// 1. 내 이름은 웹스이며, 직업은 웹 퍼블리셔입니다.
+// 2. 내 이름은 웹스토리보이이며, 직업은 프론트앤드 개발자입니다.
+```
+{% endcode %}
+
+## 62. 객체 + 함수 \(변수로 출력하기\)
+
+{% code title="객체 + 함수 \(변수로 출력하기\)" %}
+```javascript
+// 객체 + 함수 (변수로 출력하기)
+
+function func21(num, name, job) {
+    document.write( num + ". 내 이름은 " + name + "이며, 직업은 " + job + "입니다. <br>");
+};
+
+const youNum1 = "1";
+const youName1 = "웹스";
+const youJob1 = "웹 퍼블리셔";
+
+const youNum2 = "2";
+const youName2 = "웹스토리보이";
+const youJob2 = "프론트앤드 개발자";
+
+document.write("*** 62 객체 + 함수 (변수로 출력하기) *** <br>");
+
+func21(youNum1, youName1, youJob1);
+func21(youNum2, youName2, youJob2);
+
+// -- RESULT --
+// *** 62 객체 + 함수 (변수로 출력하기) ***
+// 1. 내 이름은 웹스이며, 직업은 웹 퍼블리셔입니다.
+// 2. 내 이름은 웹스토리보이이며, 직업은 프론트앤드 개발자입니다.
+```
+{% endcode %}
+
+## 63. 객체 + 함수 \(객체로 출력하기\)
+
+{% code title="객체 + 함수 \(객체로 출력하기\)" %}
+```javascript
+// 객체 + 함수 (객체로 출력하기)
+
+function func22(num, name, job) {
+    document.write( num + ". 내 이름은 " + name + "이며, 직업은 " + job + "입니다. <br>");
+};
+
+let info = [
+    {
+        num: 1,
+        name: "웹스",
+        job: "웹 퍼블리셔"
+    },
+    {
+        num: 2,
+        name: "웹스토리보이",
+        job: "프론트앤드 개발자"
+    }
+]
+
+document.write("*** 63 객체 + 함수 (객체로 출력하기) *** <br>");
+
+func22(info[0].num, info[0].name, info[0].job);
+func22(info[1].num, info[1].name, info[1].job);
+
+// -- RESULT --
+// *** 63 객체 + 함수 (객체로 출력하기) ***
+// 1. 내 이름은 웹스이며, 직업은 웹 퍼블리셔입니다.
+// 2. 내 이름은 웹스토리보이이며, 직업은 프론트앤드 개발자입니다.
+```
+{% endcode %}
+
+## 64. 객체 + 함수 \(변수\)
+
+{% code title="객체 + 함수 \(변수\)" %}
+```javascript
+// 객체 + 함수 (변수)
+
+const info = {
+    num1: 1,
+    name1: "웹스",
+    job1: "웹 퍼블리셔",
+    num2: 2,
+    name2: "웹스토리보이",
+    job2: "프론트앤드 개발자",
+    result1: function() {
+        document.write(this.num1 + ". 내 이름은 " + this.name1 + "이며, 직업은 " + this.job1 + "입니다. <br>" );
+    },
+    result2: function() {
+        document.write(this.num2 + ". 내 이름은 " + this.name2 + "이며, 직업은 " + this.job2 + "입니다. <br>" );
+    },
+}
+
+document.write("*** 64 객체 + 함수 (변수) *** <br>");
+
+info.result1();
+info.result2();
+
+// -- RESULT --
+// *** 64 객체 + 함수 (변수) ***
+// 1. 내 이름은 웹스이며, 직업은 웹 퍼블리셔입니다.
+// 2. 내 이름은 웹스토리보이이며, 직업은 프론트앤드 개발자입니다.
+```
+{% endcode %}
+
+## 65. 객체 생성자 함수
+
+변수 안에 `객체 + 함수`는 복잡하다. 대신 **함수 안에 넣어 작업**하는 것이 **객체 생성자 함수**이다.
+
+{% code title="객체 생성자 함수" %}
+```javascript
+// 객체 생성자 함수
+
+function func23(num, name, job) {
+
+    // 데이터를 가져와서 변수화 시켜 줌
+    this.num = num; 
+    this. name = name;
+    this.job = job;
+    this.result = function() {
+        document.write( this.num + ". 내 이름은 " + this.name + "이며, 직업은 " + this.job + "입니다. <br>");
+    };
+}
+
+// 인스턴스 생성
+let info1 = new func23("1", "웹스", "웹 퍼블리셔");
+let info2 = new func23("2", "웹스토리보이", "프론트앤드 개발자");
+
+document.write("*** 65 객체 생성자 함수 *** <br>");
+
+info1.result();
+info2.result();
+
+// -- RESULT --
+// *** 65 객체 생성자 함수 ***
+// 1. 내 이름은 웹스이며, 직업은 웹 퍼블리셔입니다.
+// 2. 내 이름은 웹스토리보이이며, 직업은 프론트앤드 개발자입니다.
+```
+{% endcode %}
+
+{% hint style="info" %}
+_**인스턴스**_
+
+인스턴스는 객체 생성자 함수의 **매개 변수**이다.  
+객체 생성자 함수에  **new** 라는 키워드를 붙여 **새롭게 객체를 만든 것**이다.
+{% endhint %}
+
+## 66. 프로토타입 메서드 \(함수\)
+
+함수가 많아지고 복잡해지므로 함수를 따로 빼준 것이 프로토 타입 함수이다. 자바스크립트 안에서만 프로토타입이 존재한다.
+
+{% code title="프로토타입 메서드 \(함수\)" %}
+```javascript
+// 프로토타입 메서드 (함수)
+
+function func24(num, name, job) {
+
+    // 데이터를 가져와서 변수화 시켜 줌
+    this.num = num;
+    this.name = name;
+    this.job = job;
+};
+
+// 결국 함수 안에 있는 것을 밖으로 꺼냄
+func24.prototype.result = function () {
+    document.write(this.num + ". 내 이름은 " + this.name + "이며, 직업은 " + this.job + "입니다. <br>");
+}
+
+// 인스턴스 생성
+let info1 = new func23("1", "웹스", "웹 퍼블리셔");
+let info2 = new func23("2", "웹스토리보이", "프론트앤드 개발자");
+
+document.write("*** 66 프로토타입 메서드 (함수) *** <br>");
+
+info1.result();
+info2.result();
+
+// -- RESULT --
+// *** 66 프로토타입 메서드 (함수) ***
+// 1. 내 이름은 웹스이며, 직업은 웹 퍼블리셔입니다.
+// 2. 내 이름은 웹스토리보이이며, 직업은 프론트앤드 개발자입니다.
+```
+{% endcode %}
+
+## 67. 객체 리터럴 함수 
+
+리터럴 이란? 하나로 집합시켜 놓은 것 즉, 뭉쳐 놓은 것이다. 
+
+함수를 따로 빼서 사용했지만, 여전히 중복되는 것이 많으므로 **중복되는 것을 하나로 빼주기 위해 사용하는 것이 객체 리터럴 함수**이다. 만약, this가 보인다면 객체 생성자 함수라고 생각하면 된다.
+
+{% code title="객체 리터럴 함수" %}
+```javascript
+// 객체 리터럴 함수
+
+// ** 변수값 **
+function func25(num, name, job) {
+
+    // 데이터를 가져와서 변수화 시켜 줌
+    this.num = num;
+    this.name = name;
+    this.job = job;
+};
+
+// ** 함수값 **
+// 여러 개 만들어지므로 문제이다. 그래서 하나로 합
+func25.prototype = {
+    result1: function() {
+        document.write(this.num + ". 내 이름은 " + this.name + "이며, 직업은 " + this.job + "입니다. <br>");
+    },
+    result2: function() {
+        document.write(this.num + ". 내 이름은 " + this.name + "이며, 직업은 " + this.job + "입니다. <br>");
+    }
+};
+
+// 인스턴스 생성
+let info1 = new func25("1", "웹스", "웹퍼블리셔");
+let info2 = new func25("2", "웹스토리보이", "프론트앤드 개발자");
+
+document.write("*** 67 객체 리터럴 함수 *** <br>");
+
+info1.result1();
+info2.result2();
+
+// -- RESULT --
+// ***  67 객체 리터럴 함수 ***
+// 1. 내 이름은 웹스이며, 직업은 웹 퍼블리셔입니다.
+// 2. 내 이름은 웹스토리보이이며, 직업은 프론트앤드 개발자입니다.
+```
+{% endcode %}
+
+## 68. 클래스
+
+**클래스**는 **한눈에 보기 쉽게 깔끔하게 정리**한 것이다. 하지만 세팅할 때 복잡하다. 클래스는 **함수의 집합체**이며, **클래스를 만들면 인스턴스 즉, 변수를 생성**해야 한다.
+
+{% code title="클래스" %}
+```javascript
+// 클래스
+
+class study {
+    // 클래스가 실행됐을 때, 항상 실행되는 것
+    constructor(num, name, job) {
+    
+        // 데이터를 가져와서 변수화 시켜 줌
+        this.num = num;
+        this.name = name;
+        this.job = job;
+    }
+
+    result() {
+        document.write(this.num + ". 내 이름은 " + this.name + "이며, 직업은 " + this.job + "입니다. <br>");
+    }
+}
+
+// 인스턴스 생성
+let info1 = new study("1", "웹스", "웹퍼블리셔");
+let info2 = new study("2", "웹스토리보이", "프론트앤드 개발자");
+
+document.write("*** 68 클래스 *** <br>");
+
+info1.result();
+info2.result();
+
+// -- RESULT --
+// ***  68 클래 ***
+// 1. 내 이름은 웹스이며, 직업은 웹 퍼블리셔입니다.
+// 2. 내 이름은 웹스토리보이이며, 직업은 프론트앤드 개발자입니다.
+```
+{% endcode %}
+
+## 69. 클래스 상속
+
+기존 클래스를 상속받고 싶을 때, 클래스 상속을 사용한다. **상속 시킨 후 프로퍼티를 추가**해야 한다.
+
+{% code title="클래스 상속" %}
+```javascript
+// 클래스 상속
+
+class study {
+    // 클래스가 실행됐을 때, 항상 실행되는 것
+    constructor(num, name, job) {
+        // 데이터를 가져와서 변수화 시켜 줌
+        this.num = num;
+        this.name = name;
+        this.job = job;
+    }
+
+    result() {
+        document.write(this.num + ". 내 이름은 " + this.name + "이며, 직업은 " + this.job + "입니다. <br>");
+    }
+}
+
+class study2 extends study {
+    constructor(num, name, job, age) {
+        // 기존에 것을 그대로 사용하고 프로퍼티를 추가하고 싶을 때, super 키워드를 사용. (이때! 기존 것만 매개변수로 가져와야 함)
+        super(num, name, job);
+        this.age = age;
+    }
+
+    result2() {
+        document.write(this.num + ". 내 이름은 " + this.name + "이며, 직업은 " + this.job + "입니다. <br>");
+    }
+}
+
+// 인스턴스 생성
+let info1 = new study("1", "웹스", "웹퍼블리셔");
+let info2 = new study2("2", "웹스토리보이", "프론트앤드 개발자", "40");
+
+document.write("*** 69 클래스 상속 *** <br>");
+
+info1.result();
+info2.result();
+info2.result2();
+
+// -- RESULT --
+// ***  68 클래 ***
+// 1. 내 이름은 웹스이며, 직업은 웹 퍼블리셔입니다.
+// 2. 내 이름은 웹스토리보이이며, 직업은 프론트앤드 개발자입니다.
+// 2. 내 이름은 웹스토리보이이며, 직업은 프론트앤드 개발자입니다.
 ```
 {% endcode %}
 
